@@ -5,7 +5,7 @@ class CreateTutorials < ActiveRecord::Migration[5.2]
       t.string :product
       t.string :title
       t.text :description
-      t.boolean :public
+      t.boolean :public, default: false
       t.references :company, foreign_key: true
       t.jsonb :file
 
