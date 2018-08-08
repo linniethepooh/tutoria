@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_08_073124) do
+ActiveRecord::Schema.define(version: 2018_08_08_073410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string "content"
+    t.string "headline"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -26,6 +35,46 @@ ActiveRecord::Schema.define(version: 2018_08_08_073124) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "content"
+    t.string "headline"
+    t.bigint "step_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["step_id"], name: "index_questions_on_step_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "tutorial_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tutorial_id"], name: "index_ratings_on_tutorial_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.bigint "tutorial_id"
+    t.time "start_time"
+    t.text "description"
+    t.string "headline"
+    t.text "materials"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tutorial_id"], name: "index_steps_on_tutorial_id"
+  end
+
+  create_table "tutorials", force: :cascade do |t|
+    t.string "subtitle"
+    t.string "product"
+    t.string "title"
+    t.text "description"
+    t.boolean "public"
+    t.bigint "company_id"
+    t.jsonb "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_tutorials_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,5 +99,19 @@ ActiveRecord::Schema.define(version: 2018_08_08_073124) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "views", force: :cascade do |t|
+    t.time "start_time"
+    t.time "end_time"
+    t.string "location"
+    t.string "device"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "answers", "questions"
+  add_foreign_key "questions", "steps"
+  add_foreign_key "ratings", "tutorials"
+  add_foreign_key "steps", "tutorials"
+  add_foreign_key "tutorials", "companies"
   add_foreign_key "users", "companies"
 end
