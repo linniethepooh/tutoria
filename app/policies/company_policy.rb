@@ -32,7 +32,6 @@ class CompanyPolicy < ApplicationPolicy
   private
 
   def check_company_manager
-    user.company == record && user.status == manager
+    user.company == record && user.status == "manager"
   end
-
 end
