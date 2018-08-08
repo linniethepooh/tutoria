@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_08_08_073410) do
     t.string "name"
     t.string "main_logo"
     t.string "optional_logo"
-    t.json "styling_preferences"
+    t.jsonb "styling_preferences"
     t.string "address"
     t.string "city"
     t.string "zipcode"
