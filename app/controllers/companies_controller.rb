@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :set_company, only: [:show, :edit, :update]
+  before_action :set_company, only: [:show, :edit, :update, :company]
 
   def new
     @company = Company.new
@@ -30,12 +30,16 @@ class CompaniesController < ApplicationController
 
   def update
     authorize @company
-    byebug
     if @company.update(company_params)
       redirect_to company_path(@company)
     else
       render :new
     end
+  end
+
+  def destroy
+    authorize @company
+    @company.destroy
   end
 
   private
