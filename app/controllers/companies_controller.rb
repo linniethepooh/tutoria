@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     @user = current_user
     if @company.save!
-      redirect_to companies_path(@company)
+      redirect_to company_path(@company)
       @user.manager!
     else
       render :new
