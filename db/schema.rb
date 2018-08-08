@@ -88,8 +88,13 @@ ActiveRecord::Schema.define(version: 2018_08_08_073410) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -108,4 +113,5 @@ ActiveRecord::Schema.define(version: 2018_08_08_073410) do
   add_foreign_key "ratings", "tutorials"
   add_foreign_key "steps", "tutorials"
   add_foreign_key "tutorials", "companies"
+  add_foreign_key "users", "companies"
 end
