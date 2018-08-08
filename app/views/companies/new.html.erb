@@ -1,0 +1,11 @@
+<h2>Create company</h2>
+
+<%= simple_form_for @company do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%= f.input :zipcode %>
+  <%= f.input :country, as: :text %>
+
+<%= f.submit "Create company", class: "btn btn-primary" %>
+<% end %>
