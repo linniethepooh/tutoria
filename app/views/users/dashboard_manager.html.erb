@@ -16,6 +16,7 @@
             <% @tutorials.each do |tutorial| %>
               <li><%= tutorial.product %> - <%= tutorial.title %></li>
             <% end %>
+
         </ul>
 
         </div>
@@ -42,7 +43,14 @@
 
           <ul>
             <% @staff.each do |staff| %>
-              <li><%= staff.first_name %> <%= staff.last_name %> - <%= staff.status %></li>
+              <li><%= staff.first_name %> <%= staff.last_name %> - <%= staff.status %>
+              <% if staff.id != @user.id && staff.status == "staff"%>
+                  - <%= link_to "Delete", company_user_path(@company.id, staff.id), method: :delete %>
+              <% end %>
+              <% if staff.status == "staff" %>
+                | <%= link_to "Upgrade", company_make_manager_path(@company.id, staff.id), method: :patch %>
+              </li>
+              <% end %>
             <% end %>
         </ul>
 

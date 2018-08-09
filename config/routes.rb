@@ -10,12 +10,15 @@ Rails.application.routes.draw do
   get 'tutorials/edit'
   get 'tutorials/update'
 
-  get 'dashboard-manager', to: 'pages#dashboard_manager', as: :dashboard_manager
+  get 'dashboard_manager', to: 'users#dashboard_manager', as: :dashboard_manager
 
 
   root to: 'pages#home'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :companies
+  resources :companies do
+    resources :users, only: [:destroy]
+      patch 'companies/:company_id/users/:user_id/make_manager', to: 'users#make_manager', as: :make_manager
+  end
 
 end

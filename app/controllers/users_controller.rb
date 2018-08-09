@@ -9,8 +9,17 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    authorize current_user
+    staff = User.find(params[:id])
+    staff.destroy
+    redirect_to dashboard_manager_path
+  end
+
+  def make_manager
+    authorize current_user
+    staff = User.find(params[:user_id])
+    staff.manager!
+    redirect_to dashboard_manager_path
   end
 
 end

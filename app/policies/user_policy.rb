@@ -9,6 +9,14 @@ class UserPolicy < ApplicationPolicy
     check_manager_status
   end
 
+  def destroy?
+    check_manager_status
+  end
+
+  def make_manager?
+    check_manager_status
+  end
+
   private
 
   def check_manager_status
