@@ -7,7 +7,7 @@ class CreateTutorials < ActiveRecord::Migration[5.2]
       t.text :description
       t.boolean :public, default: false
       t.references :company, foreign_key: true
-      t.jsonb :file
+      t.string :file
 
       t.timestamps
     end
