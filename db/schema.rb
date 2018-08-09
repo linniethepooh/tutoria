@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2018_08_09_031227) do
 
   create_table "steps", force: :cascade do |t|
     t.bigint "tutorial_id"
-    t.time "start_time"
+    t.integer "start_time"
     t.text "description"
     t.string "headline"
     t.text "materials"
