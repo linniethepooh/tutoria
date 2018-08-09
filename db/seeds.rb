@@ -1,7 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#Seed file for the app
+
+# tutorial = Tutorial.new ({
+#   subtitle:
+#   product: "Homemade Soda Machine"
+#   title: "How to Make Soda Fountain Machine"
+#   description: "Instruction on how to make a soda machine with three different drinks at home"
+#   public: true
+#   company: "ABC Ltd"
+# })
+# tutorial.save
+
+# company = Company.new ({
+#   name: "ABC Ltd"
+#   main_logo: "https://www.freepnglogos.com/uploads/abc-png-logo/news-abc-png-logo-3.png"
+#   optional_logo:
+#   styling_preferences:
+#   address: "Pall Mall"
+#   city: "London"
+#   zipcode: "SW98BZ"
+#   country: "United Kingdom"
+# })
+# company.save
+
+# user = User.new ({
+# username: abclin
+
+# })
