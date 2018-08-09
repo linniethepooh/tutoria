@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, controllers: { invitations: 'users/invitations' }
-
   get 'tutorials/index'
   get 'tutorials/show'
   get 'tutorials/destroy'
@@ -12,7 +10,6 @@ Rails.application.routes.draw do
   get 'tutorials/update'
 
   get 'dashboard_manager', to: 'users#dashboard_manager', as: :dashboard_manager
-
 
 
 
