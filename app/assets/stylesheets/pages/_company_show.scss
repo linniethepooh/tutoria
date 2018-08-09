@@ -1,6 +1,47 @@
 .id-container {
-  width: 100%
-  height: 96px;
   display: flex;
+  align-items: center;
+  height: 96px;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: lightgrey;
+}
 
+.logo-show {
+  height: 70px;
+  width: 70px;
+}
+
+.video-card {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.company-show-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+.video-screenshot {
+  width: auto;
+  height: auto;
+}
+
+.container{
+  h3{
+    margin-top: 15px;
+    font-weight: bold;
+  }
 }
