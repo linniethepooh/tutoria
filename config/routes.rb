@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   get 'tutorials/create'
   get 'tutorials/edit'
   get 'tutorials/update'
- 
+
+  get 'dashboard-manager', to: 'pages#dashboard_manager', as: :dashboard_manager
+
 
   root to: 'pages#home'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :companies
 
