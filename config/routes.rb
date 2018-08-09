@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { invitations: 'users/invitations' }
 
   get 'tutorials/index'
   get 'tutorials/show'
@@ -12,10 +11,11 @@ Rails.application.routes.draw do
 
   get 'dashboard-manager', to: 'pages#dashboard_manager', as: :dashboard_manager
 
-
   root to: 'pages#home'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :companies
-
+  resources :companies do
+    resources :tutorials
+  end
+  devise_for :users, controllers: { invitations: 'users/invitations' }
 end
