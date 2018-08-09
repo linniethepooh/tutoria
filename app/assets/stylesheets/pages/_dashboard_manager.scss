@@ -1,0 +1,54 @@
+.dashboard-title {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.dashboard-user {
+  color: $blue;
+}
+
+.dashboard-left {
+  width: 98%;
+  background-color: $white;
+  h5 {
+    padding-left: 10px;
+    padding-top: 5px;
+    color: $blue;
+  };
+}
+
+.dashboard-right {
+  width: 98%;
+  background-color: $white;
+  h5 {
+    padding-left: 10px;
+    padding-top: 5px;
+    color: $blue;
+  };
+}
+
+.dashboard-tutorials {
+  border: 1px solid $black;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  height: 50vh;
+  overflow: auto;
+}
+
+.dashboard-tutorials-actions {
+  border: 1px solid $black;
+  height: 20vh;
+}
+
+.dashboard-staff {
+  border: 1px solid $black;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  height: 35vh;
+}
+
+.dashboard-questions {
+  border: 1px solid $black;
+  height: 35vh;
+}
+
