@@ -1,54 +1,48 @@
-<div class="id-container">
-<!-- Logo -->
+<div class="company-show-banner">
 
-<!-- Company Name -->
-<h1>ABC Ltd.</h1>
-<!-- Buttons -->
-<button type="button" class="btn btn-secondary">Tutorial Studio</button>
 </div>
-<h3>Uploads</h3>
+
+<div class="id-container">
+  <!-- Logo -->
+  <img src="<%= asset_url('logo.png') %>" alt="logo" class="logo-show">
+  <!-- Company Name -->
+  <h1>Le Wagon</h1>
+  <div>
+    <!-- Video Creator Button -->
+    <button type="button" class="btn btn-secondary">Go to website</button>
+  </div>
+</div>
+
 <div class="container">
+  <h3>Uploads</h3>
   <div class="row">
-    <div class="col">
-      <div class="card" style="width: auto;">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="col-xs-12 col-sm-12 col-md-4 ">
+      <div class="video-card" style="width: auto;">
+        <img src="<%= asset_url('drag.png') %>" alt="logo" class="video-screenshot">
         <div class="card-body">
-          <h5 class="card-title">How to Make a Soda Fountain </h5>
-          <p class="card-text">Make a Soda Fountain Machine with 3 Different Drinks at Home.</p>s
-          <p>303 Views</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: auto;">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">How to Make a Soda Fountain </h5>
-          <p class="card-text">Make a Soda Fountain Machine with 3 Different Drinks at Home.</p>s
-          <p>303 Views</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: auto;">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">How to Make a Soda Fountain </h5>
+          <h6 class="card-title" href="#"><strong>How to Make a Soda Fountain</strong></h6>
           <p class="card-text">Make a Soda Fountain Machine with 3 Different Drinks at Home.</p>
-          <p>303 Views</p>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
     <div class="col">
-      1 of 3
+      <div class="video-card" style="width: auto;">
+        <img src="<%= asset_url('drag.png') %>" alt="logo" class="video-screenshot">
+        <div class="card-body">
+          <h6 class="card-title" href="#"><strong>How to Make a Soda Fountain</strong></h6>
+          <p class="card-text">Make a Soda Fountain Machine with 3 Different Drinks at Home.</p>
+        </div>
+      </div>
     </div>
     <div class="col">
-      2 of 3
-    </div>
-    <div class="col">
-      3 of 3
+      <div class="video-card" style="width: auto;">
+        <img src="<%= asset_url('drag.png') %>" alt="logo" class="video-screenshot">
+        <div class="card-body">
+          <h6 class="card-title" href="#"><strong>How to Make a Soda Fountain</strong></h6>
+          <p class="card-text">Make a Soda Fountain Machine with 3 Different Drinks at Home.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
