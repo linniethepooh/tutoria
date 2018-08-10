@@ -1,18 +1,19 @@
 <div class="video-area">
   <div class="video-player">
-    <video id="my-player" class="video-js vjs-default-skin vjs-16-9" height="100%" width="100%" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "playbackRates": [0.75, 1, 1.5, 2], "controlBar": { "CaptionsButton": true}}'>
+    <video id="my-player" class="video-js vjs-default-skin vjs-16-9" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "playbackRates": [0.75, 1, 1.5, 2], "controlBar": { "CaptionsButton": true}}'>
       <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
       <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm">
     </video>
   </div>
   <div class="steps-area">
+      <% @steps.each_with_index do |step, index| %>
+  <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 100%;" if index == @steps.size - 1 %>">
+    <h5><%= step.headline %></h5>
+    <p><%= step.description %>
+  </div>
+  <% end %>
   </div>
 </div>
 <div class="QA-area">
-  <% @steps.each do |step| %>
-  <div class="step">
-    <h5><%= step.headline %></h5>
-    <p><%= step.content %>
-  </div>
-  <% end %>
+
 </div>
