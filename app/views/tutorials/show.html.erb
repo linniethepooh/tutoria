@@ -7,7 +7,7 @@
   </div>
   <div class="steps-area">
       <% @steps.each_with_index do |step, index| %>
-  <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 100%;" if index == @steps.size - 1 %>">
+  <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
     <h5><%= step.headline %></h5>
     <p><%= step.description %>
   </div>
