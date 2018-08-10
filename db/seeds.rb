@@ -9,16 +9,48 @@ company = Company.new ({
 company.save
 
 tutorial = Tutorial.new ({
-  subtitle: "Hello",
-  product: "Homemade Soda Machine",
-  title: "How to Make Soda Fountain Machine",
-  description: "Instruction on how to make a soda machine with three different drinks at home.",
+  subtitle: "Climb",
+  product: "Hydraulic Powered Robotic",
+  title: "How to Make Hydraulic Powered Robotic Arm from Cardboard",
+  description: "In this video I show you how to make robotic arm from cardboard, it's quite fun to plaw with.",
   public: true,
   company: company,
-  file: "//vjs.zencdn.net/v/oceans.mp4"
+  file: "https://www.youtube.com/embed/P2r9U4wkjcc"
 })
 tutorial.save
 
+tutorial1 = Tutorial.new ({
+    subtitle: "Bang",
+  product: "Fireworks",
+  title: "How to make your own fireworks safely",
+  description: "Instruction on how to make homemade fireworks easily and safely.",
+  public: true,
+  company: company,
+  file: "https://www.youtube.com/embed/6hRC6qoa1E"
+})
+tutorial1.save
+
+tutorial2 = Tutorial.new ({
+  subtitle: "Dude!",
+  product: "Surf",
+  title: "How to surf like a pro",
+  description: "Instruction on how to surf any wave that comes your way.",
+  public: true,
+  company: company,
+  file: "https://www.youtube.com/embed/dBmHlpliXfk"
+})
+tutorial2.save
+
+tutorial3 = Tutorial.new ({
+  subtitle: "Quack",
+  product: "Ducks",
+  title: "How to count ducks",
+  description: "Instructions how to count ducks simply with out losing count.",
+  public: true,
+  company: company,
+  file: "https://www.youtube.com/embed/0iJOP-BUnO4"
+})
+tutorial3.save
 
 i = 0
 5.times do
