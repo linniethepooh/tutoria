@@ -5,6 +5,9 @@ const activateVideo = function () {
     this.on('timeupdate', function () {
       renderSteps();
     })
+    this.on('seeking', function () {
+      seekSteps();
+    })
   });
 
 }
@@ -19,12 +22,23 @@ const startTimes = function () {
 
 const renderSteps = function () {
   const player = videojs(document.querySelector('.video-js'))
-  console.log(player.currentTime());
   const playerTime = player.currentTime();
   const times = startTimes();
   for (let i = 0; i < times.length; i++) {
     if (Math.round(playerTime) == times[i]) {
       moveStep(`#step-${i+1}`);
+      break;
+    }
+  }
+}
+
+const seekSteps = function () {
+  const player = videojs(document.querySelector('.video-js'))
+  const playerTime = player.currentTime();
+  const times = startTimes();
+  for (let i = 0; i < times.length; i++) {
+    if (Math.round(playerTime) < times[i]) {
+      moveStep(`#step-${i}`);
       break;
     }
   }
@@ -48,3 +62,4 @@ export { moveStep };
 export { activateVideo };
 export { startTimes };
 export { renderSteps };
+export { seeksteps };
