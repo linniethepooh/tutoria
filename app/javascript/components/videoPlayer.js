@@ -24,7 +24,6 @@ const renderSteps = function () {
   const times = startTimes();
   for (let i = 0; i < times.length; i++) {
     if (Math.round(playerTime) == times[i]) {
-      console.log(`#step-${i+1}`);
       moveStep(`#step-${i+1}`);
       break;
     }
@@ -41,7 +40,6 @@ const moveStep = function (step) {
           height: 'easeOutBounce'
       },
       complete: function (e) {
-        console.log("animation completed");
     }
   });
 }
