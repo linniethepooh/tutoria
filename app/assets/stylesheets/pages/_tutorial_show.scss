@@ -3,19 +3,23 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 5vh;
+  height: 620px;
+  padding: 0 7.5vh;
 }
 
 .video-player {
-  height: auto;
-  width: 60vw;
+  height: 100%;
+  width: 65vw;
 }
 
 .steps-area {
-  width: 25vw;
+  width: 100%;
   height: auto;
   margin-left: 5px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  overflow: hidden;
+  overflow: scroll;
+  overflow-x: hidden;
+  flex: 1 0 35vw;
+  padding: 30px 20px;
 }
 
 .my-player-dimensions {
@@ -25,8 +29,8 @@
 
 .video-js {
     position: relative !important;
-    width: 100% !important;
-    height: auto !important;
+    width: auto !important;
+    height: 100% !important;
 }
 
 .vjs-poster {
@@ -46,4 +50,8 @@
 
 .step {
   margin: 7.5px;
+}
+
+.video-js.vjs-16-9 {
+  padding: 0px !important;
 }
