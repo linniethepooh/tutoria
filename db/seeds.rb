@@ -12,7 +12,7 @@ tutorial = Tutorial.new ({
   subtitle: "Hello",
   product: "Homemade Soda Machine",
   title: "How to Make Soda Fountain Machine",
-  description: "Instruction on how to make a soda machine with three different drinks at home",
+  description: "Instruction on how to make a soda machine with three different drinks at home.",
   public: true,
   company: company,
   file: "//vjs.zencdn.net/v/oceans.mp4"
