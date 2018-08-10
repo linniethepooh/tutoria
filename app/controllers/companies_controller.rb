@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :set_company, only: [:show, :edit, :update, :company]
+  before_action :set_company, only: [ :edit, :update, :company]
 
   def new
     @company = Company.new
@@ -9,6 +9,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @company = Company.find_by_name(params[:name].tr!('_', ' '))
     authorize @company
   end
 

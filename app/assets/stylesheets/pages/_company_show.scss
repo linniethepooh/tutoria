@@ -12,7 +12,13 @@
 }
 
 .card-body {
-  padding: 0.25rem;
+  padding: 0
+}
+
+.card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .logo-show {
@@ -30,7 +36,6 @@
   word-wrap: break-word;
   background-color: #ffffff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .company-show-container {

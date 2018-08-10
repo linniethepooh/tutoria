@@ -17,18 +17,16 @@
   <div class="row">
     <% @company.tutorials.each do |tutorial| %>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-      <div class="video-card" style="width: 348.98px;">
-        <video width = "348.98px" height = "auto" controls>
-          <source src = "<%= tutorial.file %>" type = "video/mp4">
-           This browser doesn't support video tag.
-         </video>
+      <div class="video-card" style="width: auto;">
+        <iframe width="auto" height="215" src="<%= tutorial.file %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
          <div class="card-body">
           <h5 class="card-title" href="#">
             <strong>
-              <%= tutorial.title.first(27) %>...
+              <%= tutorial.title %>
             </strong>
           </h5>
-          <p class="card-text"><%= tutorial.description %></p>
+          <p class="card-text"><%= tutorial.description.first(70) %>...</p>
         </div>
       </div>
     </div>
