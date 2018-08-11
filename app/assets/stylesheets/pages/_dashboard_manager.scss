@@ -45,10 +45,20 @@
   margin-bottom: 50px;
   margin-top: 30px;
   height: 35vh;
+  overflow: auto;
 }
 
 .dashboard-questions {
   border: 1px solid $black;
   height: 35vh;
+  overflow: auto;
+}
+
+.fas {
+  color: $blue;
+}
+
+.dashboard-action {
+  margin-left: 10px;
 }
 
