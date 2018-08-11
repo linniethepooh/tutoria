@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'dashboard_manager', to: 'users#dashboard_manager', as: :dashboard_manager
+  get 'dashboard', to: 'users#dashboard', as: :dashboard
+
+  resources :questions, only: [:new, :create]
 
 
 
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
   resources :companies, except: [:show] do
     resources :users, only: [:destroy]
     patch 'companies/:company_id/users/:user_id/make_manager', to: 'users#make_manager', as: :make_manager
-    resources :tutorials
   end
   devise_for :users, controllers: { invitations: 'users/invitations' }
 

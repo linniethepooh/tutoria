@@ -5,8 +5,8 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def dashboard_manager?
-    check_manager_status
+  def dashboard?
+    true
   end
 
   def destroy?
@@ -21,6 +21,10 @@ class UserPolicy < ApplicationPolicy
 
   def check_manager_status
     record.status == "manager"
+  end
+
+  def check_staff_status
+    record.status == "staff"
   end
 
 end
