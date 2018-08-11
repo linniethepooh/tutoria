@@ -1,4 +1,5 @@
 class Question < ApplicationRecord
   belongs_to :step
-  validates :content, :headline, presence: true
+  validates :content, :step, presence: true
+  has_one :answer
 end

@@ -42,10 +42,11 @@
 }
 
 .QA-area {
-  width: 85vw;
-  height: 300px;
-  background-color: red;
-  margin: 20px 7vw;
+  height: auto;
+  width: 65vw;
+  padding: 0 7.5vh;
+  margin-top: 5vh;
+  margin-bottom: 75px;
 }
 
 .step {
@@ -54,4 +55,19 @@
 
 .video-js.vjs-16-9 {
   padding: 0px !important;
+}
+
+.question {
+  margin: 25px;
+}
+
+.answer-body {
+  margin: 5px 20px;
+}
+
+.QA-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
