@@ -15,11 +15,11 @@
           <ul>
             <% @tutorials.each do |tutorial| %>
               <span></span><li><strong><%= tutorial.product %></strong> - <%= tutorial.title %></li>
-              <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id)%> |
-              <%= link_to "Edit", edit_company_tutorial_path(tutorial.company.id, tutorial.id)%>
-              <% if @user.status == "manager" %>
-              | <%= link_to "Delete", company_tutorial_path(tutorial.company.id, tutorial.id), method: :delete%></span>
-              <% end %>
+              <%#= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id)%> |
+              <%#= link_to "Edit", edit_company_tutorial_path(tutorial.company.id, tutorial.id)%>
+              <%# if @user.status == "manager" %>
+              | <%#= link_to "Delete", company_tutorial_path(tutorial.company.id, tutorial.id), method: :delete%></span>
+              <%# end %>
             <% end %>
 
         </ul>
@@ -93,3 +93,4 @@
 
   </div>
 </div>
+

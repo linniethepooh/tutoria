@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'users#dashboard', as: :dashboard
 
+  resources :questions, only: [:new, :create]
+
+
 
   root to: 'pages#home'
 
