@@ -25,26 +25,6 @@
         </ul>
 
         </div>
-
-          <div class="dashboard-tutorials-actions">
-            <h5>Actions</h5>
-
-          <div class="dashboard-action">
-            <i class="fas fa-plus-circle"></i> <%= link_to "New tutorial" %><br>
-          </div>
-
-          <% if @user.status == "manager" %>
-            <div class="dashboard-action">
-              <i class="fas fa-user-circle"></i> <%= link_to "New team member", new_user_invitation_path %><br>
-            </div>
-          <% end %>
-
-          <div class="dashboard-action">
-            <i class="fas fa-chart-line"></i> <%= link_to "Analytics" %><br>
-          </div>
-
-        </div>
-
       </div>
     </div>
 
@@ -73,15 +53,22 @@
 
         </div>
 
-        <div class="dashboard-questions">
-          <h5>Open questions</h5>
+       <div class="dashboard-tutorials-actions">
+            <h5>Actions</h5>
 
-          <ul>
-            <% @tutorials.each do |tutorial| %>
-              <li><%= tutorial.product %> - <%= tutorial.title %></li>
-              <div class="dashboard-tutorial-questions"></div>
-            <% end %>
-        </ul>
+          <div class="dashboard-action">
+            <i class="fas fa-plus-circle"></i> <%= link_to "New tutorial" %><br>
+          </div>
+
+          <% if @user.status == "manager" %>
+            <div class="dashboard-action">
+              <i class="fas fa-user-circle"></i> <%= link_to "New team member", new_user_invitation_path %><br>
+            </div>
+          <% end %>
+
+          <div class="dashboard-action">
+            <i class="fas fa-chart-line"></i> <%= link_to "Analytics" %><br>
+          </div>
 
         </div>
 
@@ -92,5 +79,29 @@
     </div>
 
   </div>
+
+  <div class="row">
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+      </div>
+
+      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" >
+        <div class="dashboard-questions">
+            <h5>Open questions</h5>
+
+            <ul>
+              <% @tutorials.each do |tutorial| %>
+                <li><%= tutorial.product %> - <%= tutorial.title %></li>
+                <div class="dashboard-tutorial-questions"></div>
+              <% end %>
+          </ul>
+
+          </div>
+      </div>
+
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+      </div>
+  </div>
+
+
 </div>
 
