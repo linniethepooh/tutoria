@@ -9,6 +9,7 @@ class TutorialsController < ApplicationController
 
   def show
     @steps = @tutorial.steps
+    CaptionJob.perform_later
   end
 
   def destroy

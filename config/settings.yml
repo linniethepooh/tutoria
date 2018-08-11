@@ -1,0 +1,9 @@
+default: &default
+  project_id: tutoria-1533981427256
+  gcs_bucket: tutoria_videos
+
+development:
+  <<: *default
+
+production:
+  <<: *default

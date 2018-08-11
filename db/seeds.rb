@@ -92,6 +92,7 @@ user = User.new ({
   email: "lol@lol.com",
   password: "yournamehere",
   password_confirmation: "yournamehere",
-  company: company
+  company: company,
+  admin: true
 })
 user.save
