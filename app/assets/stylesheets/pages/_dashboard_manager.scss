@@ -50,7 +50,7 @@
 
 .dashboard-questions {
   border: 1px solid $black;
-  height: 35vh;
+  height: 50vh;
   overflow: auto;
   margin-bottom: 100px;
   h5 {
@@ -66,5 +66,10 @@
 
 .dashboard-action {
   margin-left: 10px;
+}
+
+.dashboard-tutorial-questions {
+  color: $blue;
+  font-style: italic;
 }
 
