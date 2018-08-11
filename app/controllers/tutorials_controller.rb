@@ -9,6 +9,7 @@ class TutorialsController < ApplicationController
 
   def show
     @steps = @tutorial.steps
+    @question = Question.new
   end
 
   def destroy

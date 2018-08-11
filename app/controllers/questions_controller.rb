@@ -2,16 +2,11 @@ class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :new, :create]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
-  def new
-    @question = Question.new
-    authorize @question
-  end
-
   def create
     @question = Question.new(question_params)
+    @question.step_id = question_step.to_i
     @question.save
     authorize @question
-    raise
   end
 
   def show
@@ -37,7 +32,11 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:content, :headline)
+    params.require(:question).permit(:content)
+  end
+
+  def question_step
+    params[:step_id]
   end
 
   def set_restaurant

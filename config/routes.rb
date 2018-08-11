@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:new, :create]
 
+  post 'step/:step_id/questions', to: 'questions#create'
+
 
 
   root to: 'pages#home'
