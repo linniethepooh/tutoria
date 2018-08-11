@@ -15,5 +15,39 @@
   </div>
 </div>
 <div class="QA-area">
-
+  <div class="QA-header">
+    <h4> Questions & Answers </h4>
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Step
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% @tutorial.steps.each_with_index do | step, index| %>
+          <a class="dropdown-item" data-step="cardstep-<%=index%>" href="#"><%= step.headline %></a>
+        <% end %>
+      </div>
+  </div>
+  </div>
+  <div class="accordion" id="accordionExample">
+    <% @tutorial.steps.each_with_index do | step, i | %>
+      <div class="cardstep" id="cardstep-<%=i%>" style="display: <%= i == 0 ? "block" : "none" %>;">
+        <% step.questions.each_with_index do | question, index | %>
+          <div class="card">
+            <div class="card-header" id="heading<%= i %><%= index %>">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= i %><%= index %>" aria-expanded="false" aria-controls="collapseOne">
+                  <%= question.content %>
+                </button>
+              </h5>
+            </div>
+            <div id="collapse<%= i %><%= index %>" class="collapse show" aria-labelledby="heading<%= i %><%= index %>" data-parent="#accordionExample">
+              <div class="card-body">
+                <p class="answer-body"><%= question.answer.content %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
