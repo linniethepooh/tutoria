@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :companies, only: [:show], path: '', param: :name
+  resources :companies, only: [:show], path: '', param: :name do
+    resources :tutorials, only: [:show]
+  end
 
   resources :companies, except: [:show] do
     resources :users, only: [:destroy]
