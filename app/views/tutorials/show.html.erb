@@ -8,12 +8,72 @@
   <div class="steps-area">
       <% @steps.each_with_index do |step, index| %>
   <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
-    <h5><%= step.headline %></h5>
+    <h5 style="display: inline-block;"><%= step.headline %></h5>
+    <i style="display: inline-block;" data-value= <%= step.id %> type="button" class="fas fa-question-circle tutorial-question-button" data-toggle="modal" data-target="#exampleModalCenter"></i>
     <p><%= step.description %>
   </div>
   <% end %>
   </div>
 </div>
 <div class="QA-area">
-
+  <div class="QA-header">
+    <h4> Questions & Answers </h4>
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Step
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% @tutorial.steps.each_with_index do | step, index| %>
+          <a class="dropdown-item" data-step="cardstep-<%=index%>" href="#"><%= step.headline %></a>
+        <% end %>
+      </div>
+  </div>
+  </div>
+  <div class="accordion" id="accordionExample">
+    <% @tutorial.steps.each_with_index do | step, i | %>
+      <div class="cardstep" id="cardstep-<%=i%>" style="display: <%= i == 0 ? "block" : "none" %>;">
+        <% step.questions.each_with_index do | question, index | %>
+          <div class="card">
+            <div class="card-header" id="heading<%= i %><%= index %>">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= i %><%= index %>" aria-expanded="false" aria-controls="collapseOne">
+                  <%= question.content %>
+                </button>
+              </h5>
+            </div>
+            <div id="collapse<%= i %><%= index %>" class="collapse show" aria-labelledby="heading<%= i %><%= index %>" data-parent="#accordionExample">
+              <div class="card-body">
+                <p class="answer-body"><%= question.answer.content %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Submit a question</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="simple_form new_question" id="new_question" novalidate="novalidate" action="/step/3/questions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="mpAGFQzlet+3Jjw6mMY8fpLyXXhhKm0ZtDL8EiFpLMtKICrmp9JEbM1t6K9LgQgO5iVUMHva1A5+gKdvp/c0KA==">
+          <textarea label="Your question" placeholder="Please type your question here" rows="5" cols="50" name="question[content]" id="question_content"></textarea>
+
+          <input type="submit" name="commit" value="Submit" class="btn btn btn-primary" data-disable-with="Submit">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

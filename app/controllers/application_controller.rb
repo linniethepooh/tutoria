@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
    # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   # def user_not_authorized
@@ -17,11 +19,11 @@ class ApplicationController < ActionController::Base
   # end
 
   def after_sign_in_path_for(resource)
-    if resource.status == 'manager'
-      dashboard_manager_path
-    else
-      root_path
-    end
+      if resource.company
+        dashboard_path
+      else
+        root_path
+      end
   end
 
   def configure_permitted_parameters
@@ -38,5 +40,10 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
   end
 end

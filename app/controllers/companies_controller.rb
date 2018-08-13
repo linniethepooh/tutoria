@@ -9,7 +9,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.find_by_name(params[:name].tr!('_', ' '))
+    @company = Company.find_by_name(params[:name])
     authorize @company
   end
 

@@ -31,7 +31,7 @@
   border: 1px solid $black;
   margin-bottom: 50px;
   margin-top: 30px;
-  height: 50vh;
+  height: 75vh;
   overflow: auto;
 }
 
@@ -42,13 +42,34 @@
 
 .dashboard-staff {
   border: 1px solid $black;
-  margin-bottom: 50px;
+  margin-bottom: 37px;
   margin-top: 30px;
-  height: 35vh;
+  height: 50vh;
+  overflow: auto;
 }
 
 .dashboard-questions {
   border: 1px solid $black;
-  height: 35vh;
+  height: 50vh;
+  overflow: auto;
+  margin-bottom: 100px;
+  h5 {
+    padding-left: 10px;
+    padding-top: 5px;
+    color: $blue;
+  };
+}
+
+.fas {
+  color: $blue;
+}
+
+.dashboard-action {
+  margin-left: 10px;
+}
+
+.dashboard-tutorial-questions {
+  color: $blue;
+  font-style: italic;
 }
 
