@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'users#dashboard', as: :dashboard
 
-  resources :questions, only: [:new, :create, :destroy]
+  resources :questions, only: [:new, :create, :destroy] do
+    resources :answers, only: [:new, :create]
+  end
 
   post 'step/:step_id/questions', to: 'questions#create'
 

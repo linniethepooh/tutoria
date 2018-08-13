@@ -91,12 +91,14 @@
                   <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
                   <li> <%= tutorial.title %></li>
                   <% questions.each do |question| %>
-                    <ul>
-                      <li> Step: <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %> </li>
-                      <p class="dashboard-tutorial-questions"> <%= question.content %> </p>
-                      <button type="button" class="btn btn-outline-primary">Answer</button>
-                      <%= link_to "Delete", question_path(question.id), method: :delete, class: "btn btn-outline-danger" %>
-                    </ul>
+                    <% if !question.answered %>
+                      <ul>
+                        <li> Step: <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %> </li>
+                        <p class="dashboard-tutorial-questions"> <%= question.content %> </p>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">Answer</button>
+                        <%= link_to "Delete", question_path(question.id), method: :delete, class: "btn btn-outline-danger" %>
+                      </ul>
+                    <% end %>
                   <% end %>
                 <% end %>
               <% end %>
@@ -111,4 +113,30 @@
   </div>
 
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Answer question</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form class="simple_form new_question" id="new_question" novalidate="novalidate" action="/step/3/questions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="mpAGFQzlet+3Jjw6mMY8fpLyXXhhKm0ZtDL8EiFpLMtKICrmp9JEbM1t6K9LgQgO5iVUMHva1A5+gKdvp/c0KA==">
+          <textarea label="Your question" placeholder="Please type your question here" rows="5" cols="50" name="question[content]" id="question_content"></textarea>
+
+          <input type="submit" name="commit" value="Submit" class="btn btn btn-primary" data-disable-with="Submit">
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
