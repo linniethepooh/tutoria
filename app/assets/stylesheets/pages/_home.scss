@@ -1,1 +1,139 @@
 // Specific CSS for your home-page
+.home-fullscreen {
+  height: calc(100vh - 56.97px);
+}
+
+.main-button {
+  font-weight: 500;
+  font-size: 20px;
+  width: 350px;
+  background-color: #0facf3;
+  border-color: #0facf3;
+  color: #fff;
+  border-radius: 10rem;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.header {
+  position: relative;
+  border-bottom: none;
+  background-position: center;
+  -webkit-background-size: cover;
+          background-size: cover;
+  background-repeat: no-repeat;
+  padding: 160px 0 100px;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sign-up-banner {
+  background-color: #191919;
+  color: #fff;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto 70px;
+}
+
+.section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+.sign-up-button {
+  font-size: 12px;
+  padding: 9px 34px;
+  border-radius: 10rem;
+  font-weight: 600;
+  font-size: 11px;
+  padding: 7px 26px;
+  line-height: inherit;
+  color: #b5b9bf;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  background-color: #fff;
+  border-color: #ebebeb;
+  outline: none;
+  -webkit-transition: 0.15s linear;
+  transition: 0.15s linear;
+}
+
+// BANNER
+.home-banner {
+  height: 100%;
+}
+/* ---- reset ---- */
+body {
+  margin:0;
+  font:normal 75% Arial,
+  Helvetica, sans-serif;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+ }
+
+ /* ---- particles.js container ---- */
+ #particles-js {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background-color: #3fc5b5;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* ---- stats.js ---- */
+.count-particles {
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles {
+  font-size: 1.1em;
+}
+
+#stats, .count-particles {
+  -webkit-user-select: none;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#stats {
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.count-particles {
+  border-radius: 0 0 3px 3px;
+}
