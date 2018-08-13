@@ -1,6 +1,17 @@
 // Specific CSS for your home-page
+.sample-tutorials {
+  width: 300px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
+  border-radius: 2px;
+}
+.sub-line {
+  font-size: 20px;
+}
+
 .home-fullscreen {
-  height: calc(100vh - 56.97px);
+  height: 100vh;
 }
 
 .main-button {
@@ -27,14 +38,13 @@
 
 .header {
   position: relative;
-  border-bottom: none;
-  background-position: center;
-  -webkit-background-size: cover;
-          background-size: cover;
-  background-repeat: no-repeat;
-  padding: 160px 0 100px;
-  z-index: 0;
-  overflow: hidden;
+  // border-bottom: none;
+  // background-position: center;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // padding: 160px 0 100px;
+  // z-index: 0;
+  // overflow: hidden;
 }
 
 .sign-up-banner {
@@ -48,6 +58,11 @@
   margin: 0 auto 70px;
 }
 
+.sign-up-banner-content {
+  display: flex;
+  justify-content: center;
+}
+
 .section {
   padding-top: 90px;
   padding-bottom: 90px;
@@ -56,22 +71,16 @@
 }
 
 .sign-up-button {
-  font-size: 12px;
-  padding: 9px 34px;
-  border-radius: 10rem;
-  font-weight: 600;
-  font-size: 11px;
-  padding: 7px 26px;
-  line-height: inherit;
-  color: #b5b9bf;
-  letter-spacing: 1.7px;
-  text-transform: uppercase;
-  border-radius: 50px;
+  font-weight: 500;
+  font-size: 20px;
+  width: 350px;
   background-color: #fff;
   border-color: #ebebeb;
+  color: #b5b9bf;
+  border-radius: 10rem;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
   outline: none;
-  -webkit-transition: 0.15s linear;
-  transition: 0.15s linear;
 }
 
 // BANNER
@@ -94,7 +103,7 @@ canvas {
  #particles-js {
   position: absolute;
   width: 100%;
-  height: calc(100vh - 70px);
+  height: 100vh;
   background-color: #3fc5b5;
   background-image: url("");
   background-repeat: no-repeat;
