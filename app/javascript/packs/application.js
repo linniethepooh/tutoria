@@ -8,6 +8,7 @@ import { typedjs} from "../components/typed";
 import { activateButton } from "../components/collapse";
 import { questionStep } from "../components/question_form";
 import { answerQuestion } from "../components/answer_form";
+import { activateParticles} from "../components/particles";
 
 const videoPlayer = document.querySelectorAll('.video-js');
 
@@ -17,7 +18,7 @@ if (videoPlayer.length != 0) {
   activateButton();
 };
 
-typedjs()
+
 
 const tutorialPage = document.querySelector('.tutorials.show');
 if (tutorialPage) {
@@ -29,3 +30,8 @@ if (dashboard) {
   answerQuestion();
 };
 
+const home = document.querySelector('.home');
+if (home) {
+  typedjs();
+  activateParticles();
+}

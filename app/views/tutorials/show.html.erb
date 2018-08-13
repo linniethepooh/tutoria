@@ -44,7 +44,7 @@
             </div>
             <div id="collapse<%= i %><%= index %>" class="collapse show" aria-labelledby="heading<%= i %><%= index %>" data-parent="#accordionExample">
               <div class="card-body">
-                <p class="answer-body"><%= question.answer.content %></p>
+                <p class="answer-body"><%= question.answer ? question.answer.content : "not wokring" %></p>
               </div>
             </div>
           </div>
