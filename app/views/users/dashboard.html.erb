@@ -15,7 +15,7 @@
           <ul>
             <% @tutorials.each do |tutorial| %>
               <span></span><li><strong><%= tutorial.product %></strong> - <%= tutorial.title %></li>
-              <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id)%> |
+              <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-outline-primary"%> |
               <%#= link_to "Edit", edit_company_tutorial_path(tutorial.company.id, tutorial.id)%>
               <%# if @user.status == "manager" %>
               | <%#= link_to "Delete", company_tutorial_path(tutorial.company.id, tutorial.id), method: :delete%></span>
@@ -39,11 +39,10 @@
               <li><%= staff.first_name %> <%= staff.last_name %> - <%= staff.status %>
 
                 <% if @user.status == "manager" %>
-                  - <% if staff.status == "staff" %>
-                    <%= link_to "Upgrade", company_make_manager_path(@company.id, staff.id), method: :patch %>
-                  |
+                  <% if staff.status == "staff" %>
+                    <%= link_to "Upgrade", company_make_manager_path(@company.id, staff.id), method: :patch, class: "btn btn-outline-primary" %>
                     <% if staff.id != @user.id && staff.status == "staff"%>
-                      <%= link_to "Delete", company_user_path(@company.id, staff.id), method: :delete %>
+                      <%= link_to "Delete", company_user_path(@company.id, staff.id), method: :delete, class: "btn btn-outline-danger" %>
                   <% end %>
                 <% end %>
               </li>
@@ -56,20 +55,17 @@
        <div class="dashboard-tutorials-actions">
             <h5>Actions</h5>
 
-          <div class="dashboard-action">
-            <i class="fas fa-plus-circle"></i> <%= link_to "New tutorial" %><br>
-          </div>
+
+          <%= link_to "New tutorial", root_path, class: "btn btn-outline-primary" %><br>
 
           <% if @user.status == "manager" %>
-            <div class="dashboard-action">
-              <i class="fas fa-user-circle"></i> <%= link_to "New team member", new_user_invitation_path %><br>
-            </div>
+            <%= link_to "New team member", new_user_invitation_path, class: "btn btn-outline-success" %><br>
           <% end %>
-
+          <!--
           <div class="dashboard-action">
             <i class="fas fa-chart-line"></i> <%= link_to "Analytics" %><br>
           </div>
-
+          -->
         </div>
 
       </div>
@@ -88,15 +84,24 @@
         <div class="dashboard-questions">
             <h5>Open questions</h5>
 
-            <ul>
-              <% @questions.each do |question| %>
-                <% tutorial = question.step.tutorial %>
-                <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
-                <li><%= tutorial.title %> - Step: <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %></li>
-                <div class="dashboard-tutorial-questions"><%= question.content %>
-                </div>
+            <ol>
+              <% @tutorials.each do |tutorial| %>
+                <% if tutorial.questions.exists? %>
+                  <% questions = tutorial.questions %>
+                  <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
+                  <li> <%= tutorial.title %></li>
+                  <% questions.each do |question| %>
+                    <ul>
+                      <li> Step: <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %> </li>
+                      <p class="dashboard-tutorial-questions"> <%= question.content %> </p>
+                      <button type="button" class="btn btn-outline-primary">Answer</button>
+                      <%= link_to "Delete", question_path(question.id), method: :delete, class: "btn btn-outline-danger" %>
+                    </ul>
+                  <% end %>
+                <% end %>
               <% end %>
-          </ul>
+            </ol>
+
 
           </div>
       </div>
@@ -107,4 +112,3 @@
 
 
 </div>
-
