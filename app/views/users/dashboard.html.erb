@@ -95,7 +95,7 @@
                       <ul>
                         <li> Step: <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %> </li>
                         <p class="dashboard-tutorial-questions"> <%= question.content %> </p>
-                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">Answer</button>
+                        <button type="button" data-value= <%= question.id %> class="btn btn-outline-primary answer-button" data-toggle="modal" data-target="#exampleModalCenter">Answer</button>
                         <%= link_to "Delete", question_path(question.id), method: :delete, class: "btn btn-outline-danger" %>
                       </ul>
                     <% end %>
@@ -127,8 +127,8 @@
       </div>
       <div class="modal-body">
 
-        <form class="simple_form new_question" id="new_question" novalidate="novalidate" action="/step/3/questions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="mpAGFQzlet+3Jjw6mMY8fpLyXXhhKm0ZtDL8EiFpLMtKICrmp9JEbM1t6K9LgQgO5iVUMHva1A5+gKdvp/c0KA==">
-          <textarea label="Your question" placeholder="Please type your question here" rows="5" cols="50" name="question[content]" id="question_content"></textarea>
+        <form class="simple_form new_answer" id="new_answer" novalidate="novalidate" action="/questions/:question_id/answers" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="mpAGFQzlet+3Jjw6mMY8fpLyXXhhKm0ZtDL8EiFpLMtKICrmp9JEbM1t6K9LgQgO5iVUMHva1A5+gKdvp/c0KA==">
+          <textarea label="Your question" placeholder="Enter answer here" rows="5" cols="50" name="question[content]" id="question_content"></textarea>
 
           <input type="submit" name="commit" value="Submit" class="btn btn btn-primary" data-disable-with="Submit">
         </form>
