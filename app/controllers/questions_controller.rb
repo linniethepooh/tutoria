@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
     @question.step_id = question_step.to_i
     @question.save
     authorize @question
+
   end
 
   def show
@@ -27,6 +28,8 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
+    authorize @question
+    redirect_to dashboard_path
   end
 
   private

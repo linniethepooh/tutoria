@@ -15,7 +15,7 @@
           <ul>
             <% @tutorials.each do |tutorial| %>
               <span></span><li><strong><%= tutorial.product %></strong> - <%= tutorial.title %></li>
-              <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-outline-primary" %> <br><br>
+              <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-outline-primary button-size" %> <br><br>
             <% end %>
 
         </ul>
@@ -36,9 +36,9 @@
 
                 <% if @user.status == "manager" %>
                   <% if staff.status == "staff" %>
-                    <%= link_to "Upgrade", company_make_manager_path(@company.id, staff.id), method: :patch, class: "btn btn-outline-primary" %>
+                    <%= link_to "Upgrade", company_make_manager_path(@company.id, staff.id), method: :patch, class: "btn btn-outline-primary button-size" %>
                     <% if staff.id != @user.id && staff.status == "staff"%>
-                      <%= link_to "Delete", company_user_path(@company.id, staff.id), method: :delete, class: "btn btn-outline-danger" %>
+                      <%= link_to "Delete", company_user_path(@company.id, staff.id), method: :delete, class: "btn btn-outline-danger button-size" %>
                   <% end %>
                 <% end %>
               </li>
@@ -52,10 +52,10 @@
             <h5>Actions</h5>
 
 
-          <%= link_to "New tutorial", root_path, class: "btn btn-outline-primary" %><br>
+          <%= link_to "New tutorial", root_path, class: "btn btn-outline-primary button-size" %><br>
 
           <% if @user.status == "manager" %>
-            <%= link_to "New team member", new_user_invitation_path(:user), class: "btn btn-outline-success" %><br>
+            <%= link_to "New team member", new_user_invitation_path(:user), class: "btn btn-outline-success button-size" %><br>
           <% end %>
           <!--
           <div class="dashboard-action">
@@ -91,8 +91,8 @@
                       <ul>
                         <li> Step: <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %> </li>
                         <p class="dashboard-tutorial-questions"> <%= question.content %> </p>
-                        <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-outline-primary answer-button" data-toggle="modal" data-target="#exampleModalCenter">Answer</button>
-                        <%= link_to "Delete", question_path(question.id), method: :delete, class: "btn btn-outline-danger" %>
+                        <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-outline-primary answer-button button-size" data-toggle="modal" data-target="#exampleModalCenter">Answer</button>
+                        <%= link_to "Delete", question_path(question.id), method: :delete, class: "btn btn-outline-danger button-size" %>
                       </ul>
                     <% end %>
                   <% end %>
