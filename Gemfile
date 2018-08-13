@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
+
+gem 'shrine'
+gem "shrine-google_cloud_storage"
 gem "google-cloud-datastore"
 gem "google-cloud-storage"
 gem 'google-api-client'
