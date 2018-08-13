@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
-
+gem "google-cloud-datastore"
+gem "google-cloud-storage"
+gem 'google-api-client'
+gem 'google-cloud-speech'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.0'

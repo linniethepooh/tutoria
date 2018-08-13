@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   end
   devise_for :users, controllers: { invitations: 'users/invitations' }
 
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
 end
