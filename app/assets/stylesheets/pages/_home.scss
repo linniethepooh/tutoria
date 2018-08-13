@@ -10,6 +10,7 @@
 .banner-text {
   color: white;
 }
+
 .sample-tutorials {
   width: 300px;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
@@ -17,6 +18,7 @@
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
   border-radius: 2px;
 }
+
 .sub-line {
   font-size: 20px;
 }
@@ -41,6 +43,7 @@
   letter-spacing: 1.7px;
   text-transform: uppercase;
   outline: none;
+  padding: 15px 34px;
 }
 
 .particles-js {
@@ -54,13 +57,8 @@
 
 .header {
   position: relative;
-  // border-bottom: none;
-  // background-position: center;
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  // padding: 160px 0 100px;
-  // z-index: 0;
-  // overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .sign-up-banner {
