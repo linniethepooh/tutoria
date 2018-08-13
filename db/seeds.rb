@@ -62,27 +62,6 @@ i = 0
       headline: "Iam a step headline"
   })
   step.save
-  question = Question.new({
-    content: "gr8 b8 m8. i rel8 str8 appreci8 nd congratul8. i r8 dis b8 an 8/8.?#{rand(0..100)}",
-    step: step
-  })
-  question.save
-  answer = Answer.new({
-    content: " stretch posts longer than the nile's str8s. well be the captains of b8 4chan our first m8s the growth r8 will spread to reddit and like reel est8 and be a flow r8 of gr8 b8 like a blind d8 well coll8 meet me upst8 where we can convers8 or ice sk8 or lose w8 infl8 our hot air baloons and fly tail g8. we cood land in kuw8, eat a soup pl8 followed by a dessert pl8 the payment r8 wont be too ir8 and hopefully our currency wont defl8.",
-    question: question
-  })
-  answer.save
-  # 2 Questions and answer per step
-  question = Question.new({
-    content: "im sure everyone would appreci8 no h8? #{rand(0..100)}",
-    step: step
-  })
-  question.save
-  answer = Answer.new({
-    content: " stretch posts longer than the nile's str8s. well be the captains of b8 4chan our first m8s the growth r8 will spread to reddit and like reel est8 and be a flow r8 of gr8 b8 like a blind d8 well coll8 meet me upst8 where we can convers8 or ice sk8 or lose w8 infl8 our hot air baloons and fly tail g8. we cood land in kuw8, eat a soup pl8 followed by a dessert pl8 the payment r8 wont be too ir8 and hopefully our currency wont defl8.",
-    question: question
-  })
-  answer.save
 end
 
 user = User.new ({
