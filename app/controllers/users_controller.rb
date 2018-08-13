@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @tutorials = @company.tutorials.sort_by &:created_at
     @staff = @company.users
     @questions = Question.where(answered: false)
-    @question =
+
   end
 
   def destroy

@@ -59,7 +59,7 @@
           <%= link_to "New tutorial", root_path, class: "btn btn-outline-primary" %><br>
 
           <% if @user.status == "manager" %>
-            <%= link_to "New team member", new_user_invitation_path, class: "btn btn-outline-success" %><br>
+            <%= link_to "New team member", new_user_invitation_path(:user), class: "btn btn-outline-success" %><br>
           <% end %>
           <!--
           <div class="dashboard-action">
