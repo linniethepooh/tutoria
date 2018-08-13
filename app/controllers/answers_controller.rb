@@ -4,9 +4,12 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new(answer_params)
-    @answer.question_id = question_answered.to_i
+    @answer.question_id = params[:question_id].to_i
     @answer.save
+    @answer.question.answered = true
+    @answer.question.save
     authorize @answer
+    redirect_to dashboard_path
   end
 
   def show
@@ -33,10 +36,6 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:question).permit(:content)
-  end
-
-  def question_answered
-    params[:question_id]
   end
 
   def set_answer

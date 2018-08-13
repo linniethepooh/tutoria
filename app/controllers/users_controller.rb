@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     authorize current_user
     staff = User.find(params[:user_id])
     staff.manager!
-    redirect_to dashboard_manager_path
+    redirect_to dashboard_path
   end
 
 
