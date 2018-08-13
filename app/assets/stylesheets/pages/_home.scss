@@ -1,4 +1,15 @@
 // Specific CSS for your home-page
+.form-control {
+  border-radius: 50px;
+}
+
+.nav-link {
+  font-size: 16px;
+}
+
+.banner-text {
+  color: white;
+}
 .sample-tutorials {
   width: 300px;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.23);
@@ -9,6 +20,11 @@
 .sub-line {
   font-size: 20px;
 }
+
+.features {
+  font-size: 16px;
+}
+
 
 .home-fullscreen {
   height: 100vh;

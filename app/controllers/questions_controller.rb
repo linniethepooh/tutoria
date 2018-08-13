@@ -39,7 +39,7 @@ class QuestionsController < ApplicationController
     params[:step_id]
   end
 
-  def set_restaurant
+  def set_question
     @question = Question.find(params[:id])
   end
 end
