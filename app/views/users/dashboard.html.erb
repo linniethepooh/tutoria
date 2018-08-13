@@ -15,7 +15,7 @@
           <ul>
             <% @tutorials.each do |tutorial| %>
               <span></span><li><strong><%= tutorial.product %></strong> - <%= tutorial.title %></li>
-              <%#= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id)%> |
+              <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id)%> |
               <%#= link_to "Edit", edit_company_tutorial_path(tutorial.company.id, tutorial.id)%>
               <%# if @user.status == "manager" %>
               | <%#= link_to "Delete", company_tutorial_path(tutorial.company.id, tutorial.id), method: :delete%></span>
@@ -89,9 +89,12 @@
             <h5>Open questions</h5>
 
             <ul>
-              <% @tutorials.each do |tutorial| %>
-                <li><%= tutorial.product %> - <%= tutorial.title %></li>
-                <div class="dashboard-tutorial-questions"></div>
+              <% @questions.each do |question| %>
+                <% tutorial = question.step.tutorial %>
+                <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
+                <li><%= tutorial.title %> - Step: <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %></li>
+                <div class="dashboard-tutorial-questions"><%= question.content %>
+                </div>
               <% end %>
           </ul>
 
