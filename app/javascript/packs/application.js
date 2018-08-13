@@ -33,5 +33,5 @@ if (dashboard) {
 const home = document.querySelector('.home');
 if (home) {
   typedjs();
-  activateParticles();
 }
+
