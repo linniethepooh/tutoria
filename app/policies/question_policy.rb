@@ -13,5 +13,9 @@ class QuestionPolicy < ApplicationPolicy
     true
   end
 
+  def destroy?
+    true
+  end
+
   private
 end

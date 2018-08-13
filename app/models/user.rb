@@ -7,5 +7,5 @@ class User < ApplicationRecord
 
   enum status: [:staff, :manager]
 
-  validates :username, :first_name, :last_name, presence: true
+  #validates :username, :first_name, :last_name, presence: true
 end
