@@ -30,7 +30,7 @@ class SpeechToText
           wordarray = [word.word, start_time, end_time]
           sentencewords << wordarray
         end
-        if sentencewords[-1][2] - sentencewords[0][1] >= 15
+        if sentencewords[-1][2] - sentencewords[0][1] >= 12
           cut_time = (sentencewords[-1][2] - sentencewords[0][1]) / 2
           part1 = []
           part2 = []
@@ -67,7 +67,7 @@ class SpeechToText
   private
 
   def write_webvtt(rawsubtitles)
-    filename = DateTime.now.strftime('%Q') + ".webvtt"
+    filename = DateTime.now.strftime('%Q') + ".vtt"
     File.open("./app/assets/images/#{filename}", "w") do |file|
       file << "WEBVTT\n"
       file << "\n"

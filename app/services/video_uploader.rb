@@ -2,7 +2,7 @@ require "google/cloud/storage"
 
 class VideoUploader
 
-  def perform(file)
+  def perform(tutorial , file)
     filename = DateTime.now.strftime('%Q') + file
     storage_bucket
     file = @storage_bucket.create_file "./app/assets/images/#{file}", filename
