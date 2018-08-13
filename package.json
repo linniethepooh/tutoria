@@ -7,6 +7,7 @@
     "dropzone": "^5.5.1",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.4",
+    "typed.js": "^2.0.9",
     "video.js": "^7.1.0"
   },
   "devDependencies": {

@@ -1,4 +1,14 @@
 .navbar-brand {
   font-weight: bold;
 }
+ .nav-search-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+ }
+
+.navbar-toggler {
+  border: none;
+}
+
 
