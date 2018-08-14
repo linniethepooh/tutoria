@@ -6,8 +6,11 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.step_id = question_step.to_i
     @question.save
+    step = Step.find(params[:step_id])
+    tutorial = step.tutorial
+    company = tutorial.company
+    redirect_to  company_tutorial_path(company.id, tutorial.id)
     authorize @question
-
   end
 
   def show

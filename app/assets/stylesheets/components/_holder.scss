@@ -1,0 +1,20 @@
+.holder {
+  min-height: 94vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-card {
+  width: 33vw;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  transition: 0.3s;
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.content-card-content {
+  margin: 25px;
+}

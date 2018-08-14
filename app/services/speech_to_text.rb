@@ -61,7 +61,7 @@ class SpeechToText
     end
     subtilte_file = write_webvtt(rawsubtitles)
     clean_files("./app/assets/images/#{mp4file}")
-    p upload_subtitle(subtilte_file)
+    return [upload_subtitle(subtilte_file), rawsubtitles]
   end
 
   private

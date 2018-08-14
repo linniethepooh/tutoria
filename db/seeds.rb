@@ -53,15 +53,17 @@ tutorial3 = Tutorial.new ({
 tutorial3.save
 
 i = 0
+a = 0
 5.times do
-  i += 10
+  a += 1
   step = Step.new({
       tutorial: tutorial,
       start_time: i,
       description: "this is some random step text so you know what to do in this step of the tutorial you are currently watching and learning some cool stuff to build after you watched and read this step, and before you notice the next step is already there",
-      headline: "Iam a step headline"
+      headline: "Step #{a}"
   })
   step.save
+  i += 10
 end
 
 user = User.new ({
