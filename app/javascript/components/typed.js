@@ -5,8 +5,9 @@ const typedjs = () => {
   if (element != null) {
     var options = {
     strings: ["Instructions for the digitial age", "Instructions for the digitial age..."],
-    typeSpeed: 100,
+    typeSpeed: 75,
     loop: false,
+    showCursor: false,
 
     }
 

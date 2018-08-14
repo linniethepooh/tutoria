@@ -10,7 +10,15 @@
       <% @steps.each_with_index do |step, index| %>
   <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
     <h5 style="display: inline-block;"><%= step.headline %></h5>
-    <i style="display: inline-block;" data-value= <%= step.id %> type="button" class="fas fa-question-circle tutorial-question-button" data-toggle="modal" data-target="#exampleModalCenter"></i>
+    <% if step != @steps[-1] %>
+      <% step_end_time = @steps[index + 1].start_time %>
+    <% else %>
+      <% step_end_time = "end" %>
+    <% end %>
+
+    <i class="fas fa-chevron-circle-left video-playback" data-value= "<%= step.start_time %>" type="button" ></i>
+    <i class="fas fa-reply video-loop" data-start= "<%= step.start_time %>" data-end= "<%= step_end_time %>" type="button"  ></i>
+    <i style="display: inline-block;" data-value="<%= step.id %>" type="button" class="fas fa-question-circle tutorial-question-button" data-toggle="modal" data-target="#exampleModalCenter"></i>
     <p><%= step.description %>
   </div>
   <% end %>

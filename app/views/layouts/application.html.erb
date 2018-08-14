@@ -7,14 +7,16 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <link href="https://vjs.zencdn.net/7.1.0/video-js.css" rel="stylesheet">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+
+    <%= stylesheet_link_tag 'application' %>
+    <!-- remove , media: 'all' within the stylesheet link tag -->
+    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= javascript_include_tag 'application' %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>

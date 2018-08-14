@@ -1,21 +1,23 @@
 <!-- Header -->
 <header class="header fadeout header-inverse home-fullscreen" style="background-image: linear-gradient(to bottom, #243949 0%, #517fa4 100%);">
   <div id="particles-js">
-    </div>
+  </div>
   <div class="container">
-      <div class="row ">
+    <div class="row ">
       <div class="col-12 text-center align-self-center banner-text">
-        <h1 class="fs-50 fw-600 lh-15 hidden-sm-down element"></h1>
-        <br>
+        <span><h1 class="element"></h1></span>
         <p class="sub-line">A dynamic solution that allows you to digitalise instructions for your business.</p>
         <br>
         <br>
-        <a class="main-button btn btn-xl btn-round btn-primary fs-20 fw-500 w-350 shadow-3 hidden-sm-down" href="#">Get Started</a>
+        <a class="main-button btn btn-xl btn-round btn-primary fs-20 fw-500 w-350 shadow-3 hidden-sm-down" href="<%= new_user_session_path %>">Get Started</a>
         <br>
+      </div>
+    </header>
+    <div class="arrow-container">
+      <div class="arrow arrow-first"></div>
     </div>
-  </header>
-  <main class="main-content">
-    <!-- SAMPLE -->
+    <main class="main-content">
+      <!-- SAMPLE -->
       <section class="section">
         <div class="container">
           <header class="section-header">
@@ -34,52 +36,53 @@
             <div class="col-12 col-md-6 col-xl-4 text-center">
               <p><img class="sample-tutorials" src=<%= image_path "liquior.png" %> alt="liquior"></p>
               <p><strong>Liqour.com</strong></p>
+            </div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="container features">
+            <header class="section-header">
+              <h2>Features</h2>
+              <hr>
+            </header>
+            <div class="row">
+              <div class="col-12 col-md-6 col-xl-4 text-center">
+                <img src=<%= image_path "messages.png" %> alt="question">
+                <br>
+                <br>
+                <h4>Dymanic</h4>
+                <p>Your website works on any device: desktop, tablet or mobile.</p>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4 text-center">
+                <img src=<%= image_path "wrench.png" %> alt="wrench">
+                <br>
+                <br>
+                <h4>Customizable</h4>
+                <p>Style your tutorials to match your brand identity.</p>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4 text-center">
+                <img src=<%= image_path "messages.png" %> alt="messages">
+                <br>
+                <br>
+                <h4>Interactive</h4>
+                <p>Answer any questions your customers have quickly and easily.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <section class="section sign-up-banner" style="background-color: #8ea6e6">
+        <div class="container">
+          <div class="row align-items-center sign-up-banner-content">
+            <div class="col-12 col-md-9 text-center align-items-center">
+              <h4>Do you need a digitalised instructions for your business?</h4>
+              <br>
+              <a class="sign-up-button btn btn-lg btn-round btn-white" href="#">Sign up</a>
+            </div>
           </div>
         </div>
       </section>
-      <section class="section">
-        <div class="container features">
-          <header class="section-header">
-            <h2>Features</h2>
-            <hr>
-          </header>
-          <div class="row">
-            <div class="col-12 col-md-6 col-xl-4 text-center">
-              <img src=<%= image_path "messages.png" %> alt="question">
-              <br>
-              <br>
-              <h4>Dymanic</h4>
-              <p>Your website works on any device: desktop, tablet or mobile.</p>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4 text-center">
-              <img src=<%= image_path "wrench.png" %> alt="wrench">
-              <br>
-              <br>
-              <h4>Customizable</h4>
-              <p>Style your tutorials to match your brand identity.</p>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4 text-center">
-              <img src=<%= image_path "messages.png" %> alt="messages">
-              <br>
-              <br>
-              <h4>Interactive</h4>
-              <p>Answer any questions your customers have quickly and easily.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <section class="section sign-up-banner" style="background-color: #8ea6e6">
-      <div class="container">
-        <div class="row align-items-center sign-up-banner-content">
-          <div></div>
-          <div class="col-12 col-md-9 text-center align-items-center">
-            <h4>Do you need a digitalised instructions for your business?</h4>
-            <br>
-            <a class="sign-up-button btn btn-lg btn-round btn-white" href="#">Sign up</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-
+      <script>
+        particlesJS("particles-js", {"particles":{"number":{"value":95,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":121.81158184520177,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, update; count_particles = document.querySelector('.js-count-particles');
+      </script>
