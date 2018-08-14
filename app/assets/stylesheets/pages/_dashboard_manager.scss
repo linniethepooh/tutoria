@@ -11,6 +11,17 @@
   }
 }
 
+.tutorial-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  align-items: center;
+}
+
+.help-desk {
+  padding-left: 20px;
+  font-weight: bold;
+}
 .card-body {
   padding: 10px;
 }
@@ -23,11 +34,22 @@
   box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.1);
 }
 
-.question-button {
+.team-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  align-items: center;
 
+  p {
+    margin: 0;
+    font-size: 20px;
+  }
+  i {
+    margin-right: 5px;
+  }
 }
 
-.dashboard-container {
+.dash-color {
   background-color: #f9f9fa;
 }
 
@@ -73,6 +95,12 @@
   margin-top: 30px;
   height: 74vh;
   overflow: auto;
+  h5 {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-top: 20px;
+  }
 }
 
 .dashboard-tutorials-actions {
@@ -87,6 +115,12 @@
   margin-top: 30px;
   height: 50vh;
   overflow: auto;
+  h5 {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-top: 20px;
+  }
 }
 
 .dashboard-questions {
@@ -116,4 +150,12 @@
   height: auto;
   width: auto;
   padding: 3px 5px 3px 5px;
+}
+
+.mute-75 {
+  opacity: 0.75;
+}
+
+.mute-50 {
+  opacity: 0.50;
 }
