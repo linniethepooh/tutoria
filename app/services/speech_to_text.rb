@@ -61,7 +61,8 @@ class SpeechToText
     end
     subtilte_file = write_webvtt(rawsubtitles)
     clean_files("./app/assets/images/#{mp4file}")
-    return [upload_subtitle(subtilte_file), rawsubtitles]
+    response = upload_subtitle(subtilte_file)
+    return [response.media_url, rawsubtitles]
   end
 
   def write_webvtt(rawsubtitles)
@@ -133,6 +134,7 @@ class SpeechToText
   def upload_subtitle(webvtt)
     storage_bucket
     file = @storage_bucket.create_file "./app/assets/images/#{webvtt}", webvtt
+    system("rm ./app/assets/images/#{webvtt}")
     return file
   end
 end

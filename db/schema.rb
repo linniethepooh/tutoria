@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_054021) do
   end
 
   create_table "tutorials", force: :cascade do |t|
-    t.jsonb "subtitle"
+    t.string "subtitle"
     t.string "product"
     t.string "title"
     t.text "description"
