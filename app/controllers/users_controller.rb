@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     authorize current_user
     staff = User.find(params[:id])
     staff.destroy
-    redirect_to dashboard_manager_path
+    redirect_to dashboard_path
   end
 
   def make_manager
@@ -23,7 +23,6 @@ class UsersController < ApplicationController
     staff.manager!
     redirect_to dashboard_path
   end
-
 
   private
 
