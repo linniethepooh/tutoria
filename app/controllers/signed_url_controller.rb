@@ -7,7 +7,7 @@ class SignedUrlController < ApplicationController
       signed_url: GoogleStorage.signed_url(
         method: :put,
         name: params[:name],
-        expires: 5.minutes.from_now,
+        expires: 15.minutes.from_now,
         content_type: params[:content_type]
       )
     }

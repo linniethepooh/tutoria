@@ -2,7 +2,7 @@
   <dic class="content-card">
     <div class="content-card-content">
       <h4> Add a new Tutorial </h4>
-      <%= simple_form_for @tutorial, url: new_company_tutorial_path do |f| %>
+      <%= simple_form_for @tutorial, url: company_tutorials_path do |f| %>
         <%= f.input :title %>
         <%= f.input :product %>
         <%= f.input :description, as: :text %>
