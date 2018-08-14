@@ -1,9 +1,15 @@
+.tutorial-title {
+  margin-top: 20px;
+  margin-left: 55px;
+  font-size: 25px;
+}
+
 .video-area {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 5vh;
-  height: 620px;
+  margin-top: 3vh;
+  height: 500px;
   padding: 0 7.5vh;
 }
 
@@ -12,15 +18,29 @@
   width: 65vw;
 }
 
-.steps-area {
+.guide {
   width: 100%;
-  height: auto;
   margin-left: 5px;
-  overflow: scroll;
-  overflow-x: hidden;
   flex: 1 0 35vw;
   padding: 30px 20px;
+  margin-top: -20px;
+  .steps-area {
+    margin-top: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 550px;
+    flex: 1 0 35vw;
+    padding: 30px 20px;
+  }
+
 }
+
+.loop-btn-blue {
+  background-color: $blue;
+  color: $white;
+}
+
+
 
 .my-player-dimensions {
   height: 28vh;
@@ -55,6 +75,15 @@
 
 .video-js.vjs-16-9 {
   padding: 0px !important;
+}
+
+.tutorial-show-description {
+  width: 54vw;
+  margin: 2vh 7.5vh;
+  padding-left: 1vw;
+  h4 {
+    color: $blue;
+  }
 }
 
 .question {
