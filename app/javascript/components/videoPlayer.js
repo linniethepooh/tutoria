@@ -73,9 +73,13 @@ const moveStep = function (step) {
 const playback = function () {
   const player = videojs(document.querySelector('.video-js'));
   const buttons = document.querySelectorAll(".video-playback");
+  const loopbuttons = document.querySelectorAll(".video-loop");
   buttons.forEach((element) => {
     element.addEventListener("click", function() {
       loopMode = false;
+      loopbuttons.forEach(element => {
+        element.classList.remove("loop-btn-blue");
+      });
       const stepTime = element.dataset.value;
       player.currentTime(stepTime);
       player.play();
@@ -88,17 +92,22 @@ const setLoopMode = function () {
   const buttons = document.querySelectorAll(".video-loop");
   buttons.forEach(element => {
     element.addEventListener("click", function() {
-      let endTime = player2.duration();
-      if (element.dataset.end != "end") {
-        endTime = parseInt(element.dataset.end);
-      };
-      stepTimes = [parseInt(element.dataset.start), endTime];
-      const startTime = stepTimes[0];
-      const player = videojs(document.querySelector('.video-js'))
-      player.currentTime(startTime);
-      player.play();
-      scroll = false;
-      loopMode = true;
+      element.classList.toggle  ("loop-btn-blue");
+      if (loopMode == false) {
+        let endTime = player2.duration();
+        if (element.dataset.end != "end") {
+          endTime = parseInt(element.dataset.end);
+        };
+        stepTimes = [parseInt(element.dataset.start), endTime];
+        const startTime = stepTimes[0];
+        const player = videojs(document.querySelector('.video-js'))
+        player.currentTime(startTime);
+        player.play();
+        scroll = false;
+        loopMode = true;
+      } else {
+        loopMode = false;
+      }
     });
   })
 }
