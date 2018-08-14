@@ -23,8 +23,8 @@ class TutorialsController < ApplicationController
     @tutorial = Tutorial.new(tutorial_params)
     @tutorial.company = current_user.company
     if @tutorial.save
-
-      redirect_to company_tutorial_path(@tutorial)
+      CaptionJob.perform_later(@tutorial.id)
+      redirect_to company_tutorial_path(@tutorial.company, @tutorial)
     else
       render :new
     end
