@@ -1,13 +1,16 @@
 import videojs from "video.js";
 
 let loopMode = false;
-let stepTimes = []
+let stepTimes = [];
+let scroll = true;
 
 const activateVideo = function () {
   videojs(document.querySelector('.video-js')).ready(function () {
     this.on('timeupdate', function () {
       renderSteps();
+      checkScroll();
       if (loopMode == true) {
+        scroll = false;
         const player = videojs(document.querySelector('.video-js'))
         const playerTime = player.currentTime();
         loop(playerTime, stepTimes);
@@ -17,7 +20,6 @@ const activateVideo = function () {
       seekSteps();
     })
   });
-
 }
 
 const startTimes = function () {
@@ -33,7 +35,7 @@ const renderSteps = function () {
   const playerTime = player.currentTime();
   const times = startTimes();
   for (let i = 0; i < times.length; i++) {
-    if (Math.round(playerTime) == times[i]) {
+    if (Math.round(playerTime) == times[i + 1]) {
       moveStep(`#step-${i+1}`);
       break;
     }
@@ -53,17 +55,19 @@ const seekSteps = function () {
 }
 
 const moveStep = function (step) {
-  $('.steps-area').animate({
-      scrollTop: $(step).parent().scrollTop() + $(step).offset().top - $(step).parent().offset().top
-  }, {
-      duration: 1000,
-      specialEasing: {
-          width: 'linear',
-          height: 'easeOutBounce'
-      },
-      complete: function (e) {
-    }
-  });
+  if (scroll == true) {
+    $('.steps-area').animate({
+        scrollTop: $(step).parent().scrollTop() + $(step).offset().top - $(step).parent().offset().top
+    }, {
+        duration: 1000,
+        specialEasing: {
+            width: 'linear',
+            height: 'easeOutBounce'
+        },
+        complete: function (e) {
+      }
+    });
+  }
 }
 
 const playback = function () {
@@ -73,7 +77,7 @@ const playback = function () {
     element.addEventListener("click", function() {
       loopMode = false;
       const stepTime = element.dataset.value;
-      player.currentTime(stepTime - 10);
+      player.currentTime(stepTime);
       player.play();
     });
   });
@@ -93,6 +97,7 @@ const setLoopMode = function () {
       const player = videojs(document.querySelector('.video-js'))
       player.currentTime(startTime);
       player.play();
+      scroll = false;
       loopMode = true;
     });
   })
@@ -102,11 +107,20 @@ const loop = function (currentTime, stepTimes) {
   const startingTime = stepTimes[0];
   const endTime = stepTimes[1];
   const playeralt = videojs(document.querySelector('.video-js'));
-    if (Math.round(currentTime) > endTime ) {
+    if (currentTime > endTime ) {
       playeralt.currentTime(startingTime);
       playeralt.play();
     }
   }
+
+const checkScroll = function () {
+  const scrollBox = document.querySelector("#defaultCheck1");
+  if (scrollBox.checked == false) {
+    scroll = false;
+  } else {
+    scroll = true;
+  }
+}
 
 
 
@@ -117,3 +131,4 @@ export { renderSteps };
 export { seeksteps };
 export { playback };
 export { setLoopMode };
+export { checkScroll };
