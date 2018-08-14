@@ -3,6 +3,7 @@ class CreateTutorials < ActiveRecord::Migration[5.2]
     create_table :tutorials do |t|
       t.jsonb :subtitle
       t.string :product
+      t.text :materials
       t.string :title
       t.text :description
       t.boolean :public, default: false

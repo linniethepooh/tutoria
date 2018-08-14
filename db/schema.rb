@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_054021) do
   create_table "tutorials", force: :cascade do |t|
     t.string "subtitle"
     t.string "product"
+    t.text "materials"
     t.string "title"
     t.text "description"
     t.boolean "public", default: false

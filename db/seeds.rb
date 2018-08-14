@@ -15,6 +15,7 @@ tutorial = Tutorial.new ({
   description: "In this video I show you how to make robotic arm from cardboard, it's quite fun to plaw with.",
   public: true,
   company: company,
+  materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/P2r9U4wkjcc"
 })
 tutorial.save
@@ -26,6 +27,7 @@ tutorial1 = Tutorial.new ({
   description: "Instruction on how to make homemade fireworks easily and safely.",
   public: true,
   company: company,
+  materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/6hRC6qoa1E"
 })
 tutorial1.save
@@ -37,6 +39,7 @@ tutorial2 = Tutorial.new ({
   description: "Instruction on how to surf any wave that comes your way.",
   public: true,
   company: company,
+  materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/dBmHlpliXfk"
 })
 tutorial2.save
@@ -48,6 +51,7 @@ tutorial3 = Tutorial.new ({
   description: "Instructions how to count ducks simply with out losing count.",
   public: true,
   company: company,
+  materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/0iJOP-BUnO4"
 })
 tutorial3.save
