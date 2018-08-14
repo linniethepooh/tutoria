@@ -1,0 +1,15 @@
+<div class="holder">
+  <dic class="content-card">
+    <div class="content-card-content">
+      <h4> Add a new Tutorial </h4>
+      <%= simple_form_for @tutorial, url: new_company_tutorial_path do |f| %>
+        <%= f.input :title %>
+        <%= f.input :product %>
+        <%= f.input :description, as: :text %>
+        <%= file_field_tag :files, class: 'js-file-upload' %>
+        <%= f.input :file, as: :hidden %>
+        <%= f.button :submit, disabled: true%>
+      <% end %>
+    </div>
+  </dic>
+</div>
