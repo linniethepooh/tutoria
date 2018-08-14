@@ -1,4 +1,4 @@
-<div class="tutorial-title"><%= @tutorial.title %></div>
+
 <div class="video-area">
   <div class="video-player">
     <video id="my-player" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "playbackRates": [0.75, 1, 1.5, 2], "controlBar": { "CaptionsButton": true}}'>
@@ -36,10 +36,15 @@
   </div>
 </div>
 
+
 <div class="tutorial-show-description">
- <strong>Product</strong>: <%= @tutorial.product %>
- <br>
- <strong>Description</strong>: <%= @tutorial.description %>
+  <div class="tutorial-title"><%= @tutorial.title %></div>
+   <strong>Product</strong>: <%= @tutorial.product %>
+   <br>
+   <i> <%= @tutorial.description %> </i>
+   <br>
+   <strong>What you'll need: </strong>
+    <p></p>
 </div>
 
 <div class="QA-area">
