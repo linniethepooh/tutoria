@@ -4,30 +4,32 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="navbar-collapse collapse" id="navbarsExample04" style="">
-    <form class="form-inline my-2 my-md-0  mr-auto">
-      <input class="form-control search-bar-tut" type="text" placeholder="Search">
-    </form>
-    <ul class="navbar-nav">
-      <li>
-        <% if current_user %>
+  <div class="navbar-collapse collapse nav-con" id="navbarsExample04" style="">
+    <div>
+      <ul class="navbar-nav">
+        <li>
+          <% if current_user %>
           <%= link_to dashboard_path, class: "nav-link" do %>
-           Dashboard
+          Dashboard
           <% end %>
-        <% end %>
+          <% end %>
         </li>
-      <li class="nav-item">
-        <% if current_user %>
+        <li class="nav-item">
+          <% if current_user %>
           <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-           Log out
+          Log out
           <% end %>
-        <% else  %>
+          <% else  %>
           <%= link_to new_user_session_path, class: "nav-link" do %>
           Log In
           <% end %>
-        <% end %>
-      </li>
-    </ul>
-
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
+
+<!-- <form class="form-inline my-2 my-md-0  mr-auto">
+      <input class="form-control search-bar-tut" type="text" placeholder="Search">
+    </form> -->
