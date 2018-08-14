@@ -20,6 +20,15 @@ class TutorialsController < ApplicationController
   end
 
   def create
+    @tutorial = Tutorial.new(tutorial_params)
+    @tutorial.company = current_user.company
+    if @tutorial.save
+
+      redirect_to company_tutorial_path(@tutorial)
+    else
+      render :new
+    end
+    authorize @tutorial
   end
 
   def edit
@@ -34,4 +43,7 @@ class TutorialsController < ApplicationController
     @tutorial = Tutorial.find(params[:id])
   end
 
+  def tutorial_params
+    params.require(:tutorial).permit(:title, :product, :description, :file)
+  end
 end
