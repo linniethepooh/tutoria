@@ -1,15 +1,11 @@
-.tutorial-title {
-  margin-top: 20px;
-  margin-left: 55px;
-  font-size: 25px;
-}
+
 
 .video-area {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 3vh;
-  height: 500px;
+  margin-top: 5vh;
+  height: 470px;
   padding: 0 7.5vh;
 }
 
@@ -31,6 +27,8 @@
     height: 550px;
     flex: 1 0 35vw;
     padding: 30px 20px;
+    border: 1px solid #dee2e6c7;
+    background-color: #f8f9fa;
   }
 
 }
@@ -78,13 +76,22 @@
 }
 
 .tutorial-show-description {
-  width: 54vw;
+  width: 55vw;
   margin: 2vh 7.5vh;
   padding-left: 1vw;
-  h4 {
+  border: 1px solid #dee2e6c7;
+  background-color: #f8f9fa;
+  padding: 2vh 2vh 2vh 2vh;
+  .tutorial-title {
+    font-size: 23px;
     color: $blue;
+    padding-bottom: 15px;
+}
+  strong {
+    margin-top: 5px;
   }
 }
+
 
 .question {
   margin: 25px;
