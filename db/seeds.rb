@@ -54,7 +54,6 @@ tutorial3.save
 
 i = 0
 5.times do
-  i += 10
   step = Step.new({
       tutorial: tutorial,
       start_time: i,
@@ -62,6 +61,7 @@ i = 0
       headline: "Iam a step headline"
   })
   step.save
+  i += 10
 end
 
 user = User.new ({

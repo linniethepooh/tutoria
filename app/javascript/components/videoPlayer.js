@@ -1,9 +1,17 @@
 import videojs from "video.js";
 
+let loopMode = false;
+let stepTimes = []
+
 const activateVideo = function () {
   videojs(document.querySelector('.video-js')).ready(function () {
     this.on('timeupdate', function () {
       renderSteps();
+      if (loopMode == true) {
+        const player = videojs(document.querySelector('.video-js'))
+        const playerTime = player.currentTime();
+        loop(playerTime, stepTimes);
+      }
     })
     this.on('seeking', function () {
       seekSteps();
@@ -58,8 +66,54 @@ const moveStep = function (step) {
   });
 }
 
+const playback = function () {
+  const player = videojs(document.querySelector('.video-js'));
+  const buttons = document.querySelectorAll(".video-playback");
+  buttons.forEach((element) => {
+    element.addEventListener("click", function() {
+      loopMode = false;
+      const stepTime = element.dataset.value;
+      player.currentTime(stepTime - 10);
+      player.play();
+    });
+  });
+}
+
+const setLoopMode = function () {
+  const player2 = videojs(document.querySelector('.video-js'));
+  const buttons = document.querySelectorAll(".video-loop");
+  buttons.forEach(element => {
+    element.addEventListener("click", function() {
+      let endTime = player2.duration();
+      if (element.dataset.end != "end") {
+        endTime = parseInt(element.dataset.end);
+      };
+      stepTimes = [parseInt(element.dataset.start), endTime];
+      const startTime = stepTimes[0];
+      const player = videojs(document.querySelector('.video-js'))
+      player.currentTime(startTime);
+      player.play();
+      loopMode = true;
+    });
+  })
+}
+
+const loop = function (currentTime, stepTimes) {
+  const startingTime = stepTimes[0];
+  const endTime = stepTimes[1];
+  const playeralt = videojs(document.querySelector('.video-js'));
+    if (Math.round(currentTime) > endTime ) {
+      playeralt.currentTime(startingTime);
+      playeralt.play();
+    }
+  }
+
+
+
 export { moveStep };
 export { activateVideo };
 export { startTimes };
 export { renderSteps };
 export { seeksteps };
+export { playback };
+export { setLoopMode };
