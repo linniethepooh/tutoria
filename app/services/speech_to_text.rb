@@ -64,8 +64,6 @@ class SpeechToText
     return [upload_subtitle(subtilte_file), rawsubtitles]
   end
 
-  private
-
   def write_webvtt(rawsubtitles)
     filename = DateTime.now.strftime('%Q') + ".vtt"
     File.open("./app/assets/images/#{filename}", "w") do |file|

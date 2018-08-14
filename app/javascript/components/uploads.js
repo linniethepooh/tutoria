@@ -2,9 +2,8 @@ const VideoUploader = function () {
   $(".js-file-upload").on('change', function () {
   var file = this.files[0]
 
-  $.getJSON('/signed_url?name=' + encodeURIComponent(file.name) + '&content_type=' + encodeURIComponent(file.type), function (data) {
+  $.getJSON('/signed_url?name=' + encodeURIComponent(Math.floor((Math.random() * 99999999999) + 1  ).toString() + ".mp4") + '&content_type=' + encodeURIComponent(file.type), function (data) {
     var xhr = createCORSRequest('PUT', data.signed_url)
-    console.log(data.signed_url)
     document.querySelector(".progress").style.display = "block"
     xhr.onload = function () {
       if (xhr.status === 200) {
@@ -29,7 +28,6 @@ function updateProgress (event) {
   let progress = event.loaded / event.total;
   let bar = $(".progress-bar")[0];
   bar.style.width = Math.round(progress * 100) + "%";
-  console.log(progress);
 }
 
 function createCORSRequest (method, url) {
