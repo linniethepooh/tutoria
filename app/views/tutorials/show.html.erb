@@ -3,7 +3,7 @@
   <div class="video-player">
     <video id="my-player" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "playbackRates": [0.75, 1, 1.5, 2], "controlBar": { "CaptionsButton": true}}'>
       <source src="<%= @tutorial.file %>" type="video/mp4">
-      <track kind="captions" src="<%= @tutorial.subtitle ? @tutorial.subtitle.media_link : "#" %>" srclang="en" label="English" default>
+      <track kind="captions" src="<%= @tutorial.subtitle ? @tutorial.subtitle : "#" %>" srclang="en" label="English" default>
     </video>
   </div>
   <div class="guide">
