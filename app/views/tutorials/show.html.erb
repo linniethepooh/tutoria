@@ -39,12 +39,12 @@
 
 <div class="tutorial-show-description">
   <div class="tutorial-title"><%= @tutorial.title %></div>
+  <i> <%= @tutorial.description %> </i>
+  <br><br>
    <strong>Product</strong>: <%= @tutorial.product %>
    <br>
-   <i> <%= @tutorial.description %> </i>
-   <br>
-   <strong>What you'll need: </strong>
-    <p></p>
+   <div class="materials-list"><strong>What you'll need: </strong></div>
+    <p><%= @tutorial.materials %></p>
 </div>
 
 <div class="QA-area">
