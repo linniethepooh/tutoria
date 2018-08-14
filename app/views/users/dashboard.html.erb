@@ -1,6 +1,6 @@
 
 
-<div class="dashboard-container">
+<div class="dashboard-container dash-color">
   <h3 class="dashboard-title">Overview - <span class="dashboard-user"><%= @user.first_name%></span></h3>
   <div class="row">
 
@@ -10,100 +10,103 @@
     <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" >
       <div class="dashboard-left">
         <div class="dashboard-tutorials dashboard-section">
-          <h5>Tutorials</h5>
-          <ul>
-            <% @tutorials.each do |tutorial| %>
-            <span></span><li><strong><%= tutorial.product %></strong> - <%= tutorial.title %></li>
-            <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-outline-primary button-size" %> <br><br>
+          <h5>Tutorials <%= link_to root_path, class: "btn btn-primary btn-circle" do%>
+            <i class="fas fa-plus"></i>
             <% end %>
-          </ul>
+          </h5>
+
+            <% @tutorials.each do |tutorial| %>
+            <hr>
+            <div class="tutorial-card">
+              <div>
+                 <%= tutorial.title %>
+              </div>
+              <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-outline-primary button-size" %>
+              <br>
+              <br>
+            </div>
+            <% end %>
+
         </div>
       </div>
     </div>
 
     <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
       <div class="dashboard-right">
+        <div class="dashboard-tutorials-actions ">
+          <h5>Views - </h5>
+          <h5>Pending - </h5>
+        </div>
+        <div class="dashboard-staff dashboard-section">
+          <h5>Team Members
+            <% if @user.status == "manager" %>
+            <%= link_to new_user_invitation_path(:user), class: "btn btn-primary btn-circle" do %>
+            <i class="fas fa-plus"></i>
+            <% end %>
+            <% end %>
+          </h5>
+          <% @staff.each do |staff| %>
+          <hr>
+          <div class="team-card">
 
-        <div class="dashboard-tutorials-actions dashboard-section">
-          <h5>Actions</h5>
-
-
-          <%= link_to "New tutorial", root_path, class: "btn btn-outline-primary button-size" %><br>
-
-          <% if @user.status == "manager" %>
-          <%= link_to "New team member", new_user_invitation_path(:user), class: "btn btn-outline-success button-size" %><br>
-          <% end %>
-          <!--
-          <div class="dashboard-action">
-            <i class="fas fa-chart-line"></i> <%= link_to "Analytics" %><br>
-          </div>
-        -->
-      </div>
-
-      <div class="dashboard-staff dashboard-section">
-          <h5>Team</h5>
-
-          <ul>
-            <% @staff.each do |staff| %>
-            <li><%= staff.first_name %> <%= staff.last_name %> - <%= staff.status %>
-
+            <p><i class="far fa-user mute-50"></i><span> <%= staff.first_name.capitalize %> <%= staff.last_name.capitalize %></span> - <span class="mute-75"><%= staff.status.capitalize %></span>
               <% if @user.status == "manager" %>
               <% if staff.status == "staff" %>
-              <%= link_to "Upgrade", company_make_manager_path(@company.id, staff.id), method: :patch, class: "btn btn-outline-primary button-size" %>
-              <% if staff.id != @user.id && staff.status == "staff"%>
-              <%= link_to "Delete", company_user_path(@company.id, staff.id), method: :delete, class: "btn btn-outline-primary button-size" %>
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <%= link_to "Upgrade", company_make_manager_path(@company.id, staff.id), method: :patch, class: "btn btn-outline-primary" %>
+                <% if staff.id != @user.id && staff.status == "staff"%>
+                <%= link_to "Delete", company_user_path(@company.id, staff.id), method: :delete, class: "btn btn-outline-primary" %>
+              </div>
               <% end %>
               <% end %>
-            </li>
             <% end %>
+            </div>
             <% end %>
-          </ul>
-
+          </p>
         </div>
-
+      </div>
     </div>
+
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+    </div>
+
   </div>
 
-  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-  </div>
+  <div class="row dash-color">
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+    </div>
 
-</div>
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" >
+      <h5 class="help-desk">Help Desk </h5>
+      <div class="dashboard-questions">
 
-<div class="row">
-  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-  </div>
-
-  <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" >
-    <h5>Help Desk </h5>
-    <div class="dashboard-questions">
-      <ol>
-        <% @tutorials.each do |tutorial| %>
-        <% if tutorial.questions.exists? && !tutorial.questions.pluck(:answered).all?  %>
-        <% questions = tutorial.questions %>
-        <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
-        <% questions.each do |question| %>
-        <% if !question.answered %>
-        <div class="card question-card" style="width: auto;">
-          <div class="card-body">
-            <h5 class="card-title"> Step <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= tutorial.title %></h6>
-            <p class="card-text"><%= question.content %> </p>
-            <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-reply"></i></button>
-            <%= link_to question_path(question.id), method: :delete, class: "btn btn-primary btn-circle" do %>
-            <i class="fas fa-trash-alt"></i>
-            <% end %>
+          <% @tutorials.each do |tutorial| %>
+          <% if tutorial.questions.exists? && !tutorial.questions.pluck(:answered).all?  %>
+          <% questions = tutorial.questions %>
+          <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
+          <% questions.each do |question| %>
+          <% if !question.answered %>
+          <div class="card question-card" style="width: auto;">
+            <div class="card-body">
+              <h5 class="card-title"><%= tutorial.title %></h5>
+              <h6 class="card-subtitle mb-2 text-muted">Step <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %></h6>
+              <p class="card-text"><%= question.content %> </p>
+              <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-reply"></i></button>
+              <%= link_to question_path(question.id), method: :delete, class: "btn btn-primary btn-circle" do %>
+              <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </div>
           </div>
-        </div>
-        <% end %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </ol>
+          <% end %>
+          <% end %>
+          <% end %>
+          <% end %>
+
+      </div>
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
     </div>
   </div>
-  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-  </div>
-</div>
 
 
 </div>
