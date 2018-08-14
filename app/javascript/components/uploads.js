@@ -5,26 +5,32 @@ const VideoUploader = function () {
   $.getJSON('/signed_url?name=' + encodeURIComponent(file.name) + '&content_type=' + encodeURIComponent(file.type), function (data) {
     var xhr = createCORSRequest('PUT', data.signed_url)
     console.log(data.signed_url)
-
+    document.querySelector(".progress").style.display = "block"
     xhr.onload = function () {
       if (xhr.status === 200) {
-        console.log(xhr.response)
         alert('Upload Succesfull!')
             const videoPath = xhr.responseURL.split("?")[0];
             document.querySelector("#tutorial_file").value = videoPath
             document.querySelector(".btn").disabled = false;
       } else {
-        alert('Upload failed')
+        alert('Upload failed, please try again!')
       }
     }
     xhr.onerror = function () {
-      alert('failure')
+      alert('Upload failed, please try again!')
     }
+    xhr.upload.addEventListener("progress", updateProgress, false);
     xhr.setRequestHeader('Content-Type', file.type)
     xhr.send(file)
   })
 })
 
+function updateProgress (event) {
+  let progress = event.loaded / event.total;
+  let bar = $(".progress-bar")[0];
+  bar.style.width = Math.round(progress * 100) + "%";
+  console.log(progress);
+}
 
 function createCORSRequest (method, url) {
   var xhr = new XMLHttpRequest()
