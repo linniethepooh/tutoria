@@ -11,6 +11,7 @@
       <div class="dashboard-left">
         <div class="dashboard-tutorials dashboard-section">
           <h5>Tutorials</h5>
+          <hr>
           <ul>
             <% @tutorials.each do |tutorial| %>
             <span></span><li><strong><%= tutorial.product %></strong> - <%= tutorial.title %></li>
@@ -28,10 +29,10 @@
           <h5>Actions</h5>
 
 
-          <%= link_to "New tutorial", root_path, class: "btn btn-outline-primary button-size" %><br>
+          <%= link_to "Tutorial Studio", root_path, class: "btn btn-outline-primary button-size" %><br>
 
           <% if @user.status == "manager" %>
-          <%= link_to "New team member", new_user_invitation_path(:user), class: "btn btn-outline-success button-size" %><br>
+          <%= link_to "Add Team Member", new_user_invitation_path(:user), class: "btn btn-outline-success button-size" %><br>
           <% end %>
           <!--
           <div class="dashboard-action">
@@ -42,7 +43,7 @@
 
       <div class="dashboard-staff dashboard-section">
           <h5>Team</h5>
-
+          <hr>
           <ul>
             <% @staff.each do |staff| %>
             <li><%= staff.first_name %> <%= staff.last_name %> - <%= staff.status %>
