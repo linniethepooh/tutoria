@@ -11,6 +11,7 @@ import { questionStep } from "../components/question_form";
 import { answerQuestion } from "../components/answer_form";
 import { activateParticles} from "../components/particles";
 import { setLoopMode } from "../components/videoPlayer";
+import { checkScroll } from "../components/videoPlayer";
 
 const videoPlayer = document.querySelectorAll('.video-js');
 
@@ -25,6 +26,7 @@ if (tutorialPage) {
   questionStep();
   playback();
   setLoopMode();
+  checkScroll();
 };
 
 const dashboard = document.querySelector('.users.dashboard');

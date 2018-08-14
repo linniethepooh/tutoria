@@ -6,8 +6,8 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.step_id = question_step.to_i
     @question.save
+    redirect_to
     authorize @question
-
   end
 
   def show
