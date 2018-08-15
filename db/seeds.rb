@@ -39,7 +39,7 @@ tutorial1 = Tutorial.new ({
   materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/6hRC6qoa1E"
 })
-tutorial1.save
+tutorial1.save!
 104.times do
   View.create!({
     start_time: DateTime.now,
@@ -60,7 +60,7 @@ tutorial2 = Tutorial.new ({
   materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/dBmHlpliXfk"
 })
-tutorial2.save
+tutorial2.save!
 76.times do
   View.create!({
     start_time: DateTime.now,
@@ -81,7 +81,7 @@ tutorial3 = Tutorial.new ({
   materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/0iJOP-BUnO4"
 })
-tutorial3.save
+tutorial3.save!
 38.times do
   View.create!({
     start_time: DateTime.now,
@@ -102,7 +102,7 @@ a = 0
       description: "this is some random step text so you know what to do in this step of the tutorial you are currently watching and learning some cool stuff to build after you watched and read this step, and before you notice the next step is already there",
       headline: "Step #{a}"
   })
-  step.save
+  step.save!
   i += 10
 end
 
@@ -117,4 +117,4 @@ user = User.new ({
   company_id: company.id,
   admin: true
 })
-user.save
+user.save!
