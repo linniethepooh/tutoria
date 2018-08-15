@@ -21,7 +21,6 @@
               <div class="card-body">
                 <p>
                   <%= link_to tutorial.title, company_tutorial_path(tutorial.company.id, tutorial.id) %>
-                  <%= tutorial.title %>
                 </p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                   <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-secondary" %>
