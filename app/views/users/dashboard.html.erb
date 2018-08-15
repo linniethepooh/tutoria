@@ -108,7 +108,7 @@
             <h5 class="card-title"><%= tutorial.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted">Step <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %></h6>
             <p class="card-text"><%= question.content %> </p>
-            <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-primary btn-circle" data-toggle="modal" title="Reply" data-target="#exampleModalCenter"><i class="fas fa-reply"></i></button>
+            <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-primary btn-circle answer-button" data-toggle="modal" title="Reply" data-target="#exampleModalCenter"><i class="fas fa-reply"></i></button>
             <%= link_to question_path(question.id), method: :delete, class: "btn btn-primary btn-circle", title: "Delete" do %>
             <i class="fas fa-trash-alt"></i>
             <% end %>

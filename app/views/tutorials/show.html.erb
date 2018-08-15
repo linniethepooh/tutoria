@@ -83,6 +83,7 @@
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= i %><%= index %>" aria-expanded="false" aria-controls="collapseOne">
 
                     <%= question.content %>
+                      <%= link_to "Delete", question_path(question.id), method: :delete %>
                   <% end %>
                 </button>
               </h5>
