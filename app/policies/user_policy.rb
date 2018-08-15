@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def dashboard?
-    true
+    record.company
   end
 
   def destroy?

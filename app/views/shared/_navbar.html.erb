@@ -8,11 +8,14 @@
     <div>
       <ul class="navbar-nav">
         <li>
-          <% if current_user %>
-          <%= link_to dashboard_path, class: "nav-link" do %>
-          Dashboard
+
+        <% if current_user %>
+          <% if policy(current_user).dashboard?  %>
+            <%= link_to dashboard_path, class: "nav-link" do %>
+            Dashboard
+            <% end %>
           <% end %>
-          <% end %>
+        <% end %>
         </li>
         <li class="nav-item">
           <% if current_user %>
