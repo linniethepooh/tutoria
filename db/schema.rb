@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_054021) do
+ActiveRecord::Schema.define(version: 2018_08_15_081406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -126,6 +126,8 @@ ActiveRecord::Schema.define(version: 2018_08_14_054021) do
     t.string "device"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tutorial_id"
+    t.index ["tutorial_id"], name: "index_views_on_tutorial_id"
   end
 
   add_foreign_key "answers", "questions"
@@ -134,4 +136,5 @@ ActiveRecord::Schema.define(version: 2018_08_14_054021) do
   add_foreign_key "steps", "tutorials"
   add_foreign_key "tutorials", "companies"
   add_foreign_key "users", "companies"
+  add_foreign_key "views", "tutorials"
 end

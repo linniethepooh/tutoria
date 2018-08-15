@@ -1,125 +1,126 @@
 
 <div class="container">
-<div class="dashboard-container dash-color">
-  <h3 class="dashboard-title">Overview - <span class="dashboard-user"><%= @user.first_name%></span></h3>
-  <div class="row">
-    <!-- <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-    </div> -->
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
-      <div class="dashboard-left">
-        <div class="dashboard-tutorials dashboard-section">
-          <h5>
-            Tutorials
-            <%= link_to root_path, class: "btn btn-primary btn-circle" do%>
-            <i class="fas fa-plus"></i>
-            <% end %>
-          </h5>
-
+  <div class="dashboard-container">
+    <h3 class="dashboard-title">Overview - <span class="dashboard-user"><%= @user.first_name%></span></h3>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" >
+        <div class="dashboard-left">
+          <div class="dashboard-tutorials dashboard-section">
+            <div class="sub-heading">
+              <h5>
+                Tutorials
+                <%= link_to root_path, class: "btn btn-primary btn-circle", title: "Add" do%>
+                <i class="fas fa-plus"></i>
+                <% end %>
+              </h5>
+            </div>
             <% @tutorials.each do |tutorial| %>
-            <hr>
             <div>
               <div class="card-body">
-                <p>
+                <h6>
                   <%= link_to tutorial.title, company_tutorial_path(tutorial.company.id, tutorial.id) %>
-                  <%= tutorial.title %>
-                </p>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-secondary" %>
-                <label class="btn btn-outline-primary">
-                  <input type="radio" name="options" id="option2" autocomplete="off"> Edit
-                </label>
-                <label class="btn btn-outline-primary">
-                  <input type="radio" name="options" id="option3" autocomplete="off"> Delete
-                </label>
-              </div>
+                </h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= tutorial.views.count %> views</h6>
+                <button type="button" class="btn btn btn-primary btn-circle" title="Edit" >
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button type="button" class="btn btn btn-primary btn-circle" title="Delete" >
+                  <i class="fas fa-trash-alt"></i>
+                </button>
               </div>
             </div>
+            <hr>
             <% end %>
-
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-      <div class="dashboard-right">
-        <div class="dashboard-tutorials-actions ">
-          <div class="dashboard-stats">
-            <h5><%= @questions.count %></h5>
-            <p>Pending Questions</p>
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="dashboard-right">
+          <div class="dashboard-tutorials-actions ">
+            <div class="dashboard-stats">
+              <h2><%= @questions.count %></h2>
+              <p>Pending Questions</p>
+            </div>
+            <!-- <div class="dashboard-seperator"></div>
+            <div class="dashboard-stats">
+              <h2><%= @questions.count %></h2>
+              <p>Pending Questions</p>
+            </div> -->
           </div>
-          <div class="dashboard-stats view-stat">
-            <h5><%= @questions.count %></h5>
-            <p>Pending Questions</p>
-          </div>
-        </div>
-        <div class="dashboard-staff dashboard-section">
-          <h5>Team Members
-            <% if @user.status == "manager" %>
-            <%= link_to new_user_invitation_path(:user), class: "btn btn-primary btn-circle" do %>
-            <i class="fas fa-plus"></i>
-            <% end %>
-            <% end %>
-          </h5>
-          <% @staff.each do |staff| %>
-          <hr>
-          <div class="team-card">
+          <div class="dashboard-staff dashboard-section">
+            <div class="sub-heading">
+              <h5>Team Members
+                <% if @user.status == "manager" %>
+                <%= link_to new_user_invitation_path(:user), class: "btn btn-primary btn-circle", title: "Add" do %>
+                <i class="fas fa-plus"></i>
+                <% end %>
+                <% end %>
+              </h5>
+            </div>
+            <% @staff.each do |staff| %>
+            <div class="team-card">
+              <div>
+                <h6>
+                  <%= staff.first_name.capitalize %>
+                  <%= staff.last_name.capitalize %>
+                </h6>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <i class="far fa-user"></i>
+                  <%= staff.status.capitalize %>
+                </h6>
+              </div>
 
-            <p><i class="far fa-user mute-50"></i><span> <%= staff.first_name.capitalize %> <%= staff.last_name.capitalize %></span> - <span class="mute-75"><%= staff.status.capitalize %></span>
-              <% if @user.status == "manager" %>
-              <% if staff.status == "staff" %>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <%= link_to "Upgrade", company_make_manager_path(@company.id, staff.id), method: :patch, class: "btn btn-outline-primary" %>
+
+                <div>
+                <% if @user.status == "manager" %>
+                <% if staff.status == "staff" %>
+                <%= link_to company_make_manager_path(@company.id, staff.id), method: :patch, class: "btn btn btn-primary btn-circle text-center", title: "Upgrade" do %>
+                <i class="fas fa-angle-double-up"></i>
+                <% end %>
                 <% if staff.id != @user.id && staff.status == "staff"%>
-                <%= link_to "Delete", company_user_path(@company.id, staff.id), method: :delete, class: "btn btn-outline-primary" %>
-              </div>
-              <% end %>
-              <% end %>
-            <% end %>
+                <%= link_to company_user_path(@company.id, staff.id), method: :delete, class: "btn btn btn-primary btn-circle", title: "Delete" do %>
+                <i class="fas fa-trash-alt"></i>
+                <% end %>
+                <% end %>
+                <% end %>
+                <% end %>
+                </div>
             </div>
+            <hr>
             <% end %>
-          </p>
+
         </div>
       </div>
+
     </div>
-
-   <!--  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-    </div> -->
-
-  </div>
-
-  <div class="row dash-color">
-    <!-- <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-    </div> -->
-
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
       <h5 class="help-desk">Help Desk </h5>
       <div class="dashboard-questions">
 
-          <% @tutorials.each do |tutorial| %>
-          <% if tutorial.questions.exists? && !tutorial.questions.pluck(:answered).all?  %>
-          <% questions = tutorial.questions %>
-          <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
-          <% questions.each do |question| %>
-          <% if !question.answered %>
-          <div class="card question-card" style="width: auto;">
-            <div class="card-body">
-              <h5 class="card-title"><%= tutorial.title %></h5>
-              <h6 class="card-subtitle mb-2 text-muted">Step <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %></h6>
-              <p class="card-text"><%= question.content %> </p>
-              <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-reply"></i></button>
-              <%= link_to question_path(question.id), method: :delete, class: "btn btn-primary btn-circle" do %>
-              <i class="fas fa-trash-alt"></i>
-              <% end %>
-            </div>
+        <% @tutorials.each do |tutorial| %>
+        <% if tutorial.questions.exists? && !tutorial.questions.pluck(:answered).all?  %>
+        <% questions = tutorial.questions %>
+        <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
+        <% questions.each do |question| %>
+        <% if !question.answered %>
+        <div class="card question-card" style="width: auto;">
+          <div class="card-body">
+            <h5 class="card-title"><%= tutorial.title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Step <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %></h6>
+            <p class="card-text"><%= question.content %> </p>
+            <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-primary btn-circle" data-toggle="modal" title="Reply" data-target="#exampleModalCenter"><i class="fas fa-reply"></i></button>
+            <%= link_to question_path(question.id), method: :delete, class: "btn btn-primary btn-circle", title: "Delete" do %>
+            <i class="fas fa-trash-alt"></i>
+            <% end %>
           </div>
-          <% end %>
-          <% end %>
-          <% end %>
-          <% end %>
+        </div>
+        <% end %>
+        <% end %>
+        <% end %>
+        <% end %>
 
       </div>
     </div>
-    <!-- <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-    </div> -->
   </div>
 
 

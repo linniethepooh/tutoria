@@ -6,7 +6,7 @@ company = Company.new ({
   zipcode: "SW98BZ",
   country: "United Kingdom"
 })
-company.save
+company.save!
 
 tutorial = Tutorial.new ({
   subtitle: "Climb",
@@ -14,11 +14,20 @@ tutorial = Tutorial.new ({
   title: "How to Make Hydraulic Powered Robotic Arm from Cardboard",
   description: "In this video I show you how to make robotic arm from cardboard, it's quite fun to plaw with.",
   public: true,
-  company: company,
+  company_id: company.id,
   materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/P2r9U4wkjcc"
 })
-tutorial.save
+tutorial.save!
+5.times do
+  View.create!({
+    start_time: DateTime.now,
+    end_time: DateTime.now,
+    location: "United Kingdom",
+    device: "iPad",
+    tutorial_id: tutorial.id
+  })
+end
 
 tutorial1 = Tutorial.new ({
     subtitle: "Bang",
@@ -26,11 +35,20 @@ tutorial1 = Tutorial.new ({
   title: "How to make your own fireworks safely",
   description: "Instruction on how to make homemade fireworks easily and safely.",
   public: true,
-  company: company,
+  company_id: company.id,
   materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/6hRC6qoa1E"
 })
 tutorial1.save
+5.times do
+  View.create!({
+    start_time: DateTime.now,
+    end_time: DateTime.now,
+    location: "United Kingdom",
+    device: "iPad",
+    tutorial_id: tutorial1.id
+  })
+end
 
 tutorial2 = Tutorial.new ({
   subtitle: "Dude!",
@@ -38,7 +56,7 @@ tutorial2 = Tutorial.new ({
   title: "How to surf like a pro",
   description: "Instruction on how to surf any wave that comes your way.",
   public: true,
-  company: company,
+  company_id: company.id,
   materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/dBmHlpliXfk"
 })
@@ -50,7 +68,7 @@ tutorial3 = Tutorial.new ({
   title: "How to count ducks",
   description: "Instructions how to count ducks simply with out losing count.",
   public: true,
-  company: company,
+  company_id: company.id,
   materials: "2 Pairs of jeans. 2 Sport shorts. 3 Shorts.",
   file: "https://www.youtube.com/embed/0iJOP-BUnO4"
 })
@@ -77,7 +95,8 @@ user = User.new ({
   email: "lol@lol.com",
   password: "yournamehere",
   password_confirmation: "yournamehere",
-  company: company,
+  status: "manager",
+  company_id: company.id,
   admin: true
 })
 user.save
