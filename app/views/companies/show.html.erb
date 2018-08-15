@@ -1,30 +1,41 @@
-<div class="company-show-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
+<div class="company-show-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://www.presseportal.de/download/image/422342-wetzlar-1.jpg');">
+
+  <h1><%= @company.name.capitalize %> tutorials </h1>
+
+    <!-- Video Creator Button -->
+  <button type="button" class="btn btn-danger website-link">Go to website</button>
 </div>
 
-<div class="id-container">
+<!--<div class="id-container">-->
   <!-- Logo -->
-  <img src="<%= @company.main_logo %>" alt="logo" class="logo-show">
+  <!--<img src="<%= @company.main_logo %>" alt="logo" class="logo-show">-->
   <!-- Company Name -->
-  <h1><%= @company.name %></h1>
-  <div>
-    <!-- Video Creator Button -->
-    <button type="button" class="btn btn-danger">Go to website</button>
-  </div>
-</div>
+
+<!--</div> -->
 
 <div class="container">
-  <h3>Uploads</h3>
+
+  <div class="tutorial-search">
+
+    <form class="tutorial-search-form" action="/ikea" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;"/>
+    <input type="text" name="query" id="query" class="form-control" placeholder="Find tutorials" /><button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+  </div>
+
+
+
   <div class="row">
-    <% @company.tutorials.each do |tutorial| %>
+    <% @tutorials.each do |tutorial| %>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
       <div class="video-card" style="width: auto;">
         <iframe width="auto" height="215" src="<%= tutorial.file %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
          <div class="card-body">
           <h5 class="card-title" href="#">
-            <strong>
-              <%= tutorial.title %>
-            </strong>
+
+              <%= link_to tutorial.title, company_tutorial_path(tutorial.company.id, tutorial.id) %>
+
           </h5>
           <p class="card-text"><%= tutorial.description.first(70) %>...</p>
         </div>
