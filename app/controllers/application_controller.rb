@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       if resource.company
         dashboard_path
       else
-        root_path
+        new_company_path
       end
   end
 
