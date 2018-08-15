@@ -24,6 +24,7 @@ class TutorialsController < ApplicationController
     @tutorial.company = current_user.company
     if @tutorial.save
       CaptionJob.perform_later(@tutorial.id)
+      ResizeJob.perform_later(@tutorial.id)
       redirect_to edit_company_tutorial_path(@tutorial.company, @tutorial)
     else
       render :new

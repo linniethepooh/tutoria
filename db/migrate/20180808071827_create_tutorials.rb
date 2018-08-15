@@ -9,6 +9,9 @@ class CreateTutorials < ActiveRecord::Migration[5.2]
       t.boolean :public, default: false
       t.references :company, foreign_key: true
       t.string :file
+      t.string :filehigh
+      t.string :filemedium
+      t.string :filelow
 
       t.timestamps
     end
