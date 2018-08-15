@@ -7,14 +7,6 @@
   background-color: #f8f9fa;
 }
 
-.tutorial-search {
-  width: 50%;
-  border-radius: 10%;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-
 .card-text {
   text-align: justify;
   font-size: 15px;
@@ -72,6 +64,9 @@
   color: white;
   text-align: center;
   height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   background-position: center;
@@ -96,3 +91,34 @@
   opacity: 0.6;
   margin-bottom: 30px;
 }
+
+.tutorial-search {
+  width: 100%;
+  border-radius: 10%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#namanyay-search-btn {
+background:#0099ff;
+color:white;
+font: 'trebuchet ms', trebuchet;
+padding:10px 20px;
+border-radius:0 5px 5px 0;
+-moz-border-radius:0 5px 5px 0;
+-webkit-border-radius:0 5px 5px 0;
+-o-border-radius:0 5px 5px 0;
+border:0 none;
+font-weight:bold;
+}
+
+#namanyay-search-box {
+background: #eee;
+padding:10px;
+ border-radius:5px 0 0 5px;
+-moz-border-radius:5px 0 0 5px;
+-webkit-border-radius:5px 0 0 5px;
+-o-border-radius:5px 0 0 5px;
+border: 0 none;
+width: 380px;
+background-color: $white;
+ }

@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2018_08_14_054021) do
 
   create_table "questions", force: :cascade do |t|
     t.string "content"
-    t.string "headline"
     t.bigint "step_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
