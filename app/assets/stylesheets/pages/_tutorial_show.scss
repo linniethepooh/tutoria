@@ -1,4 +1,7 @@
-
+.step-head {
+      display: flex;
+    justify-content: space-between;
+}
 
 .video-area {
   display: flex;
@@ -28,7 +31,7 @@
     height: 550px;
     flex: 1 0 35vw;
     padding: 30px 20px;
-    border-radius: 25px;
+    border-radius: 12.5px;
     border: none;
     box-shadow: 0 15px 35px rgba(50,50,93,.075), 0 5px 15px rgba(0,0,0,.02);
     background-color: $white;
@@ -79,14 +82,14 @@
 }
 
 .tutorial-show-description {
-  width: 55vw;
+  width: 54vw;
   margin: 2vh 7.5vh;
   padding-left: 1vw;
   border: none;
   box-shadow: 0 15px 35px rgba(50,50,93,.075), 0 5px 15px rgba(0,0,0,.02);
   background-color: $white;
   padding: 2vh 2vh 2vh 2vh;
-  border-radius: 25px;
+  border-radius: 12.5px;
 
 .tutorial-title {
     font-size: 23px;
