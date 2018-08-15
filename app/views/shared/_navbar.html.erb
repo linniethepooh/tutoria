@@ -13,9 +13,16 @@
           <% if policy(current_user).dashboard?  %>
             <%= link_to dashboard_path, class: "nav-link" do %>
             Dashboard
+              <% end %>
+
+            <% elsif !current_user.company %>
+              <%= link_to new_company_path, class: "nav-link" do %>
+              Add company
             <% end %>
+
           <% end %>
         <% end %>
+
         </li>
         <li class="nav-item">
           <% if current_user %>
