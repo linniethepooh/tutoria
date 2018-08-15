@@ -3,124 +3,130 @@
   <div class="video-player">
     <video id="my-player" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "playbackRates": [0.75, 1, 1.5, 2]}'>
       <source src="<%= @tutorial.file %>" type="video/mp4" label="Source" selected="true">
-      <% if @tutorial.filehigh %>
-      <source src="<%= @tutorial.filehigh %>" type="video/mp4" label="720P">
-      <% end %>
-      <% if @tutorial.filemedium %>
-      <source src="<%= @tutorial.filemedium %>" type="video/mp4" label="480P">
-      <% end %>
-      <% if @tutorial.filelow %>
-      <source src="<%= @tutorial.filelow %>" type="video/mp4" label="360P">
-      <% end %>
-      <track kind="captions" src="<%= @tutorial.subtitle ? @tutorial.subtitle : "#" %>" srclang="en" label="English" default>
-    </video>
-  </div>
-  <div class="guide">
-    <div class="scroll-holder">
-        <div class="auto-scroll-box">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked="true">
-            <label class="form-check-label" for="defaultCheck1">
-              Automatic scrolling
-            </label>
-          </div>
-        </div>
-      </div>
-    <div class="steps-area">
-        <% @steps.each_with_index do |step, index| %>
-    <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
-      <h5 style="display: inline-block;"><%= step.headline %></h5>
-      <% if step != @steps[-1] %>
-        <% step_end_time = @steps[index + 1].start_time %>
-      <% else %>
-        <% step_end_time = "end" %>
-      <% end %>
-      <button type="button" class="btn btn-outline-primary btn-sm video-playback view-btn-circle" data-value= "<%= step.start_time %>" title="Watch Step"><i class="far fa-eye"></i></button>
-      <button type="button" class="btn btn-outline-primary btn-sm video-loop view-btn-circle" data-start= "<%= step.start_time %>" data-end= "<%= step_end_time %>" title="Loop Step"><i class="fas fa-undo-alt"></i></button>
-      <button type="button" class="btn btn-outline-primary btn-sm tutorial-question-button view-btn-circle" data-value="<%= step.id %>" data-toggle="modal" data-target="#exampleModalCenter" title="Ask Question"><i class="far fa-question-circle"></i></button>
-      <p><%= step.description %>
-      <hr>
-    </div>
 
-    <% end %>
-    </div>
-  </div>
-</div>
-
-
-<div class="tutorial-show-description">
-  <div class="tutorial-title"><%= @tutorial.title %></div>
-  <i> <%= @tutorial.description %> </i>
-  <br><br>
-   <strong>Product</strong>: <%= @tutorial.product %>
-   <br>
-   <div class="materials-list"><strong>What you'll need: </strong></div>
-    <p><%= @tutorial.materials %></p>
-</div>
-
-<div class="QA-area">
-  <div class="QA-header">
-    <h4> Questions & Answers </h4>
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Select Step
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <% @tutorial.steps.each_with_index do | step, index| %>
-          <a class="dropdown-item" data-step="cardstep-<%=index%>" href="#"><%= step.headline %></a>
-        <% end %>
-      </div>
-  </div>
-  </div>
-  <div class="accordion" id="accordionExample">
-    <% @tutorial.steps.each_with_index do | step, i | %>
-      <div class="cardstep" id="cardstep-<%=i%>" style="display: <%= i == 0 ? "block" : "none" %>;">
-        <% step.questions.each_with_index do | question, index | %>
-        <% if question.answer %>
-          <div class="card">
-            <div class="card-header" id="heading<%= i %><%= index %>">
-              <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= i %><%= index %>" aria-expanded="false" aria-controls="collapseOne">
-
-                    <%= question.content %>
-                      <%= link_to "Delete", question_path(question.id), method: :delete %>
-                  <% end %>
-                </button>
-              </h5>
+      
+        <% if @tutorial.filehigh %>
+        <source src="<%= @tutorial.filehigh %>" type="video/mp4" label="720P">
+          <% end %>
+          <% if @tutorial.filemedium %>
+          <source src="<%= @tutorial.filemedium %>" type="video/mp4" label="480P">
+            <% end %>
+            <% if @tutorial.filelow %>
+            <source src="<%= @tutorial.filelow %>" type="video/mp4" label="360P">
+              <% end %>
+              <track kind="captions" src="<%= @tutorial.subtitle ? @tutorial.subtitle : "#" %>" srclang="en" label="English" default>
+              </video>
             </div>
-            <div id="collapse<%= i %><%= index %>" class="collapse show" aria-labelledby="heading<%= i %><%= index %>" data-parent="#accordionExample">
-              <div class="card-body">
-                <p class="answer-body"><%= question.answer ? question.answer.content : "not wokring" %></p>
+            <div class="guide">
+              <div class="scroll-holder">
+                <div class="auto-scroll-box">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked="true">
+                    <label class="form-check-label" for="defaultCheck1">
+                      Automatic scrolling
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="steps-area">
+                <% @steps.each_with_index do |step, index| %>
+                <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
+                  <div class="step-head">
+                    <h5 style="display: inline-block;"><%= step.headline %></h5>
+                    <div>
+                      <% if step != @steps[-1] %>
+                      <% step_end_time = @steps[index + 1].start_time %>
+                      <% else %>
+                      <% step_end_time = "end" %>
+                      <% end %>
+                      <button type="button" class="btn btn-outline-primary btn-sm video-playback view-btn-circle" data-value= "<%= step.start_time %>" title="Watch Step"><i class="far fa-eye"></i></button>
+                      <button type="button" class="btn btn-outline-primary btn-sm video-loop view-btn-circle" data-start= "<%= step.start_time %>" data-end= "<%= step_end_time %>" title="Loop Step"><i class="fas fa-undo-alt"></i></button>
+                      <button type="button" class="btn btn-outline-primary btn-sm tutorial-question-button view-btn-circle" data-value="<%= step.id %>" data-toggle="modal" data-target="#exampleModalCenter" title="Ask Question"><i class="far fa-question-circle"></i></button>
+                    </div>
+                  </div>
+                  <p><%= step.description %>
+                    <hr>
+                  </div>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Submit a question</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="simple_form new_question" id="new_question" novalidate="novalidate" action="/step/3/questions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="mpAGFQzlet+3Jjw6mMY8fpLyXXhhKm0ZtDL8EiFpLMtKICrmp9JEbM1t6K9LgQgO5iVUMHva1A5+gKdvp/c0KA==">
-          <textarea label="Your question" placeholder="Please type your question here" rows="5" cols="50" name="question[content]" id="question_content"></textarea>
+            <div class="tutorial-show-description">
+              <div class="tutorial-title"><%= @tutorial.title %></div>
+              <i> <%= @tutorial.description %> </i>
+              <br><br>
+              <strong>Product</strong>: <%= @tutorial.product %>
+              <br>
+              <div class="materials-list"><strong>What you'll need: </strong></div>
+              <p><%= @tutorial.materials %></p>
+            </div>
 
-          <input type="submit" name="commit" value="Submit" class="btn btn btn-primary" data-disable-with="Submit">
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+            <div class="QA-area">
+              <div class="QA-header">
+                <h4> Questions & Answers </h4>
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select Step
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <% @tutorial.steps.each_with_index do | step, index| %>
+                    <a class="dropdown-item" data-step="cardstep-<%=index%>" href="#"><%= step.headline %></a>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion" id="accordionExample">
+                <% @tutorial.steps.each_with_index do | step, i | %>
+                <div class="cardstep" id="cardstep-<%=i%>" style="display: <%= i == 0 ? "block" : "none" %>;">
+                  <% step.questions.each_with_index do | question, index | %>
+                  <% if question.answer %>
+                  <div class="card">
+                    <div class="card-header" id="heading<%= i %><%= index %>">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= i %><%= index %>" aria-expanded="false" aria-controls="collapseOne">
+
+
+                          <%= question.content %>
+                            <%= link_to "Delete", question_path(question.id), method: :delete %>
+                          <% end %>
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapse<%= i %><%= index %>" class="collapse show" aria-labelledby="heading<%= i %><%= index %>" data-parent="#accordionExample">
+                      <div class="card-body">
+                        <p class="answer-body"><%= question.answer ? question.answer.content : "not wokring" %></p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <% end %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Submit a question</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="simple_form new_question" id="new_question" novalidate="novalidate" action="/step/3/questions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="mpAGFQzlet+3Jjw6mMY8fpLyXXhhKm0ZtDL8EiFpLMtKICrmp9JEbM1t6K9LgQgO5iVUMHva1A5+gKdvp/c0KA==">
+                      <textarea label="Your question" placeholder="Please type your question here" rows="5" cols="50" name="question[content]" id="question_content"></textarea>
+
+                      <input type="submit" name="commit" value="Submit" class="btn btn btn-primary" data-disable-with="Submit">
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
