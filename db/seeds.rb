@@ -19,7 +19,7 @@ tutorial = Tutorial.new ({
   file: "https://www.youtube.com/embed/P2r9U4wkjcc"
 })
 tutorial.save!
-5.times do
+89.times do
   View.create!({
     start_time: DateTime.now,
     end_time: DateTime.now,
@@ -40,7 +40,7 @@ tutorial1 = Tutorial.new ({
   file: "https://www.youtube.com/embed/6hRC6qoa1E"
 })
 tutorial1.save
-5.times do
+104.times do
   View.create!({
     start_time: DateTime.now,
     end_time: DateTime.now,
@@ -61,6 +61,15 @@ tutorial2 = Tutorial.new ({
   file: "https://www.youtube.com/embed/dBmHlpliXfk"
 })
 tutorial2.save
+76.times do
+  View.create!({
+    start_time: DateTime.now,
+    end_time: DateTime.now,
+    location: "United Kingdom",
+    device: "iPad",
+    tutorial_id: tutorial2.id
+  })
+end
 
 tutorial3 = Tutorial.new ({
   subtitle: "Quack",
@@ -73,6 +82,15 @@ tutorial3 = Tutorial.new ({
   file: "https://www.youtube.com/embed/0iJOP-BUnO4"
 })
 tutorial3.save
+38.times do
+  View.create!({
+    start_time: DateTime.now,
+    end_time: DateTime.now,
+    location: "United Kingdom",
+    device: "iPhone",
+    tutorial_id: tutorial3.id
+  })
+end
 
 i = 0
 a = 0
