@@ -1,22 +1,42 @@
 
-
+<div class="container">
 <div class="dashboard-container dash-color">
   <h3 class="dashboard-title">Overview - <span class="dashboard-user"><%= @user.first_name%></span></h3>
   <div class="row">
-
-    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-    </div>
-
-    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" >
+    <!-- <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+    </div> -->
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
       <div class="dashboard-left">
         <div class="dashboard-tutorials dashboard-section">
-          <h5>Tutorials <%= link_to root_path, class: "btn btn-primary btn-circle" do%>
+          <h5>
+            Tutorials
+            <%= link_to root_path, class: "btn btn-primary btn-circle" do%>
             <i class="fas fa-plus"></i>
             <% end %>
           </h5>
 
             <% @tutorials.each do |tutorial| %>
             <hr>
+            <div>
+              <div class="card-body">
+                <p>
+                  <%= tutorial.title %>
+                </p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                  <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-secondary" %>
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="option2" autocomplete="off"> Radio
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="option3" autocomplete="off"> Radio
+                </label>
+              </div>
+              </div>
+            </div>
+
+
             <div class="tutorial-card">
               <div>
                  <%= tutorial.title %>
@@ -26,15 +46,21 @@
               <br>
             </div>
             <% end %>
+
         </div>
       </div>
     </div>
-
-    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
       <div class="dashboard-right">
         <div class="dashboard-tutorials-actions ">
-          <h5>Views - </h5>
-          <h5>Pending - </h5>
+          <div class="dashboard-stats">
+            <h5><%= @questions.count %></h5>
+            <p>Pending Questions</p>
+          </div>
+          <div class="dashboard-stats view-stat">
+            <h5><%= @questions.count %></h5>
+            <p>Pending Questions</p>
+          </div>
         </div>
         <div class="dashboard-staff dashboard-section">
           <h5>Team Members
@@ -66,16 +92,16 @@
       </div>
     </div>
 
-    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-    </div>
+   <!--  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+    </div> -->
 
   </div>
 
   <div class="row dash-color">
-    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-    </div>
+    <!-- <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+    </div> -->
 
-    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" >
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
       <h5 class="help-desk">Help Desk </h5>
       <div class="dashboard-questions">
 
@@ -103,8 +129,8 @@
 
       </div>
     </div>
-    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
-    </div>
+    <!-- <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+    </div> -->
   </div>
 
 
@@ -137,4 +163,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
