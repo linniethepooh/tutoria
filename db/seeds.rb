@@ -1,5 +1,5 @@
 company = Company.new ({
-  name: "ikea",
+  name: "Ikea",
   main_logo: "https://www.freepnglogos.com/uploads/abc-png-logo/news-abc-png-logo-3.png",
   address: "Pall Mall",
   city: "London",
@@ -118,3 +118,52 @@ user = User.new ({
   admin: true
 })
 user.save!
+
+user2 = User.new ({
+  username: "madmike",
+  first_name: "Mike",
+  last_name: "Maddington",
+  email: "mm@lol.com",
+  password: "yournamehere",
+  password_confirmation: "yournamehere",
+  status: "staff",
+  company_id: company.id,
+  admin: true
+})
+user2.save!
+
+user3 = User.new ({
+  username: "peggyweggy",
+  first_name: "Peg",
+  last_name: "Weg",
+  email: "pw@lol.com",
+  password: "yournamehere",
+  password_confirmation: "yournamehere",
+  status: "staff",
+  company_id: company.id,
+  admin: true
+})
+user3.save!
+
+user4 = User.new ({
+  username: "dingdong",
+  first_name: "Ding",
+  last_name: "Dong",
+  email: "bell@lol.com",
+  password: "yournamehere",
+  password_confirmation: "yournamehere",
+  status: "staff",
+  company_id: company.id,
+  admin: true
+})
+user4.save!
+
+question = Question.create ({
+  content: "Do you love birds? I do!",
+  step_id: 1,
+})
+
+question2 = Question.create ({
+  content: "At what depth are the tastiest fish? ",
+  step_id: 2,
+})

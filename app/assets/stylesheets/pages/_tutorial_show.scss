@@ -20,15 +20,18 @@
   flex: 1 0 35vw;
   padding: 30px 20px;
   margin-top: -20px;
-  .steps-area {
+
+.steps-area {
     margin-top: 10px;
     overflow: scroll;
     overflow-x: hidden;
     height: 550px;
     flex: 1 0 35vw;
     padding: 30px 20px;
-    border: 1px solid #dee2e6c7;
-    background-color: #f8f9fa;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 15px 35px rgba(50,50,93,.075), 0 5px 15px rgba(0,0,0,.02);
+    background-color: $white;
   }
 
 }
@@ -79,10 +82,13 @@
   width: 55vw;
   margin: 2vh 7.5vh;
   padding-left: 1vw;
-  border: 1px solid #dee2e6c7;
-  background-color: #f8f9fa;
+  border: none;
+  box-shadow: 0 15px 35px rgba(50,50,93,.075), 0 5px 15px rgba(0,0,0,.02);
+  background-color: $white;
   padding: 2vh 2vh 2vh 2vh;
-  .tutorial-title {
+  border-radius: 25px;
+
+.tutorial-title {
     font-size: 23px;
     color: $blue;
     padding-bottom: 15px;
@@ -95,6 +101,16 @@
   }
 }
 
+.view-btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  justify-content: center;
+}
 
 .question {
   margin: 25px;
