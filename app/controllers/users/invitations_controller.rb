@@ -7,5 +7,6 @@ class Users::InvitationsController < Devise::InvitationsController
   end
   def create
     self.resource = invite_resource {|resource| resource.company = current_user.company }
+    redirect_to dashboard_path
   end
 end

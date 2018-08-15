@@ -1,8 +1,17 @@
 
 <div class="video-area">
   <div class="video-player">
-    <video id="my-player" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "playbackRates": [0.75, 1, 1.5, 2], "controlBar": { "CaptionsButton": true}}'>
-      <source src="<%= @tutorial.file %>" type="video/mp4">
+    <video id="my-player" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "playbackRates": [0.75, 1, 1.5, 2]}'>
+      <source src="<%= @tutorial.file %>" type="video/mp4" label="Source" selected="true">
+      <% if @tutorial.filehigh %>
+      <source src="<%= @tutorial.filehigh %>" type="video/mp4" label="720P">
+      <% end %>
+      <% if @tutorial.filemedium %>
+      <source src="<%= @tutorial.filemedium %>" type="video/mp4" label="480P">
+      <% end %>
+      <% if @tutorial.filelow %>
+      <source src="<%= @tutorial.filelow %>" type="video/mp4" label="360P">
+      <% end %>
       <track kind="captions" src="<%= @tutorial.subtitle ? @tutorial.subtitle : "#" %>" srclang="en" label="English" default>
     </video>
   </div>
