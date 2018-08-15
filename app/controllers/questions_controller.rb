@@ -30,6 +30,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    if @question.answer
+      answer = @question.answer
+      answer.destroy
+    end
     @question.destroy
     authorize @question
     redirect_to dashboard_path
