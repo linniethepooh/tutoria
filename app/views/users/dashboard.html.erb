@@ -20,30 +20,19 @@
             <div>
               <div class="card-body">
                 <p>
+                  <%= link_to tutorial.title, company_tutorial_path(tutorial.company.id, tutorial.id) %>
                   <%= tutorial.title %>
                 </p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active">
                   <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-secondary" %>
+                <label class="btn btn-outline-primary">
+                  <input type="radio" name="options" id="option2" autocomplete="off"> Edit
                 </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-                </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="option3" autocomplete="off"> Radio
+                <label class="btn btn-outline-primary">
+                  <input type="radio" name="options" id="option3" autocomplete="off"> Delete
                 </label>
               </div>
               </div>
-            </div>
-
-
-            <div class="tutorial-card">
-              <div>
-                 <%= tutorial.title %>
-              </div>
-              <%= link_to "View", company_tutorial_path(tutorial.company.id, tutorial.id), class: "btn btn-outline-primary button-size" %>
-              <br>
-              <br>
             </div>
             <% end %>
 
