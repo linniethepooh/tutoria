@@ -1,7 +1,7 @@
 class CreateTutorials < ActiveRecord::Migration[5.2]
   def change
     create_table :tutorials do |t|
-      t.jsonb :subtitle
+      t.string :subtitle
       t.string :product
       t.text :materials
       t.string :title
