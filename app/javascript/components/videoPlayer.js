@@ -1,4 +1,5 @@
 import videojs from "video.js";
+require('silvermine-videojs-quality-selector')(videojs);
 
 let loopMode = false;
 let stepTimes = [];
@@ -20,6 +21,9 @@ const activateVideo = function () {
       seekSteps();
     })
   });
+ require('silvermine-videojs-quality-selector')(videojs);
+ const player = videojs(document.querySelector('.video-js'))
+ player.controlBar.addChild('qualitySelector');
 }
 
 const startTimes = function () {
