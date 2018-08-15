@@ -7,12 +7,21 @@
   background-color: #f8f9fa;
 }
 
+.tutorial-search {
+  width: 50%;
+  border-radius: 10%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
 .card-text {
   text-align: justify;
+  font-size: 15px;
 }
 
 .card-body {
-  padding: 0
+
 }
 
 .card-title {
@@ -27,7 +36,7 @@
 }
 
 .video-card {
-  margin-top: 5px;
+  margin-top: 20px;
   margin-bottom: 5px;
   position: relative;
   display: flex;
@@ -62,13 +71,19 @@
 .company-show-banner {
   color: white;
   text-align: center;
-  height: 30vh;
+  height: 50vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-position: center;
+  position: relative;
 }
+
+.website-link {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+}
+
 .company-show-banner h1 {
   font-size: 50px;
   font-weight: bold;

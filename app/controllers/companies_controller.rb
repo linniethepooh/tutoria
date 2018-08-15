@@ -10,6 +10,15 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find_by_name(params[:name])
+    if params[:query].present?
+      sql_query = " \
+        tutorials.title @@ :query \
+        OR tutorials.description @@ :query \
+        "
+      @tutorials = Tutorial.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @tutorials = @company.tutorials
+    end
     authorize @company
   end
 
