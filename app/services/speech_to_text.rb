@@ -89,6 +89,8 @@ class SpeechToText
     return filename
   end
 
+  private
+
   def convert_mp4_to_flac(mp4_path)
     flac_path = mp4_path.gsub(".mp4", ".flac")
     system("ffmpeg -i #{mp4_path} #{flac_path}")

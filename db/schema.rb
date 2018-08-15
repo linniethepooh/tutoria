@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_054021) do
   end
 
   create_table "tutorials", force: :cascade do |t|
-    t.jsonb "subtitle"
+    t.string "subtitle"
     t.string "product"
     t.text "materials"
     t.string "title"
@@ -74,6 +74,9 @@ ActiveRecord::Schema.define(version: 2018_08_14_054021) do
     t.boolean "public", default: false
     t.bigint "company_id"
     t.string "file"
+    t.string "filehigh"
+    t.string "filemedium"
+    t.string "filelow"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.hstore "rawsubtitles", default: {}, null: false
