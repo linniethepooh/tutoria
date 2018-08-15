@@ -24,7 +24,7 @@ class TutorialsController < ApplicationController
     @tutorial.company = current_user.company
     if @tutorial.save
       CaptionJob.perform_later(@tutorial.id)
-      redirect_to company_tutorial_path(@tutorial.company, @tutorial)
+      redirect_to edit_company_tutorial_path(@tutorial.company, @tutorial)
     else
       render :new
     end
@@ -32,6 +32,8 @@ class TutorialsController < ApplicationController
   end
 
   def edit
+    @steps = @tutorial.steps
+    authorize @tutorial
   end
 
   def update

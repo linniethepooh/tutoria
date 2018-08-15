@@ -1,2 +1,67 @@
-<h1>Tutorials#edit</h1>
-<p>Find me in app/views/tutorials/edit.html.erb</p>
+
+<div class="edit-page" style="display: <%= "none" if @tutorial.subtitle.nil? %>;">
+  <div class="video-area">
+    <div class="video-player">
+      <video id="my-player" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "playbackRates": [0.75, 1, 1.5, 2], "controlBar": { "CaptionsButton": true}}'>
+        <source src="<%= @tutorial.file %>" type="video/mp4">
+        <track kind="captions" src="<%= @tutorial.subtitle ? @tutorial.subtitle : "#" %>" srclang="en" label="English" default>
+      </video>
+    </div>
+    <div class="guide">
+        <div class="auto-scroll-box">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked="true">
+            <label class="form-check-label" for="defaultCheck1">
+              Automatic scrolling
+            </label>
+          </div>
+      </div>
+
+      <div class="steps-area">
+
+          <% @steps.each_with_index do |step, index| %>
+      <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
+        <h5 style="display: inline-block;"><%= step.headline %></h5>
+        <% if step != @steps[-1] %>
+          <% step_end_time = @steps[index + 1].start_time %>
+        <% else %>
+          <% step_end_time = "end" %>
+        <% end %>
+        <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">See</button>
+        <button type="button" class="btn btn-outline-primary btn-sm video-loop" data-start= "<%= step.start_time %>" data-end= "<%= step_end_time %>">Loop</button>
+        <button type="button" class="btn btn-outline-primary btn-sm tutorial-question-button" data-value="<%= step.id %>" data-toggle="modal" data-target="#exampleModalCenter">?</button>
+        <p><%= step.description %>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="tutorial-show-description">
+    <div class="tutorial-title"><%= @tutorial.title %></div>
+    <i> <%= @tutorial.description %> </i>
+    <br><br>
+     <strong>Product</strong>: <%= @tutorial.product %>
+     <br>
+     <div class="materials-list"><strong>What you'll need: </strong></div>
+      <p><%= @tutorial.materials %></p>
+  </div>
+</div>
+
+<div class="currently-processing" style="display: <%= "none" if @tutorial.subtitle %>;">
+  <div class="loader-holder">
+    <div class="loader">
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__ball"></div>
+    </div>
+    <div class="loader-text">
+      <p> We are currently processing your Tutorial please come back later. (We'll send you an email when your Tutorial is ready!) </p>
+    </div>
+  </div>
+</div>
+
