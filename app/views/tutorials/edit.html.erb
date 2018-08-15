@@ -3,7 +3,16 @@
   <div class="video-area">
     <div class="video-player">
       <video id="my-player" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "playbackRates": [0.75, 1, 1.5, 2]}'>
-        <source src="<%= @tutorial.file %>" type="video/mp4">
+        <source src="<%= @tutorial.file %>" type="video/mp4" label="Source" selected="true">
+        <% if @tutorial.filehigh %>
+        <source src="<%= @tutorial.filehigh %>" type="video/mp4" label="720P">
+        <% end %>
+        <% if @tutorial.filemedium %>
+        <source src="<%= @tutorial.filemedium %>" type="video/mp4" label="480P">
+        <% end %>
+        <% if @tutorial.filelow %>
+        <source src="<%= @tutorial.filelow %>" type="video/mp4" label="360P">
+        <% end %>
         <track kind="captions" src="<%= @tutorial.subtitle ? @tutorial.subtitle : "#" %>" srclang="en" label="English" default>
       </video>
     </div>
@@ -16,23 +25,22 @@
             </label>
           </div>
       </div>
-
       <div class="steps-area">
 
-          <% @steps.each_with_index do |step, index| %>
-      <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
-        <h5 style="display: inline-block;"><%= step.headline %></h5>
-        <% if step != @steps[-1] %>
-          <% step_end_time = @steps[index + 1].start_time %>
-        <% else %>
-          <% step_end_time = "end" %>
+        <% @steps.each_with_index do |step, index| %>
+          <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
+            <h5 style="display: inline-block;"><%= step.headline %></h5>
+            <% if step != @steps[-1] %>
+              <% step_end_time = @steps[index + 1].start_time %>
+            <% else %>
+              <% step_end_time = "end" %>
+            <% end %>
+            <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">See</button>
+            <button type="button" class="btn btn-outline-primary btn-sm video-loop" data-start= "<%= step.start_time %>" data-end= "<%= step_end_time %>">Loop</button>
+            <button type="button" class="btn btn-outline-primary btn-sm tutorial-question-button" data-value="<%= step.id %>" data-toggle="modal" data-target="#exampleModalCenter">?</button>
+            <p><%= step.description %>
+          </div>
         <% end %>
-        <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">See</button>
-        <button type="button" class="btn btn-outline-primary btn-sm video-loop" data-start= "<%= step.start_time %>" data-end= "<%= step_end_time %>">Loop</button>
-        <button type="button" class="btn btn-outline-primary btn-sm tutorial-question-button" data-value="<%= step.id %>" data-toggle="modal" data-target="#exampleModalCenter">?</button>
-        <p><%= step.description %>
-      </div>
-      <% end %>
       </div>
     </div>
   </div>
