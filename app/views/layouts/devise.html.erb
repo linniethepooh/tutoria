@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tutoria: Instructions for the digital world</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <link href="https://vjs.zencdn.net/7.1.0/video-js.css" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application' %>
+    <!-- remove , media: 'all' within the stylesheet link tag -->
+    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
+
+<div class="row">
+
+  <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+
+    <div class="sign-up-form">
+
+
+      <%= yield %>
+
+
+     </div>
+  </div>
+</div>
