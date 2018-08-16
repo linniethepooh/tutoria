@@ -26,6 +26,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem "pundit"
 gem 'devise_invitable'
+gem 'country_select', '~> 3.1', '>= 3.1.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

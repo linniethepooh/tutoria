@@ -4,17 +4,24 @@
 
     <div class="sign-up-form">
 
-<h3>Create company</h3>
+      <h3>Create company</h3>
 
-<%= simple_form_for @company do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :city %>
-  <%= f.input :zipcode %>
-  <%= f.input :country, as: :text %>
-
-<%= f.submit "Create company", class: "btn btn-primary" %>
-<% end %>
+      <%= simple_form_for @company do |f| %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.input :city %>
+        <%= f.input :zipcode %>
+        <%= f.input :country %>
+        <%= f.input :website %>
+        <label for="file-upload" class="custom-file-upload">
+          <i class="fas fa-cloud-upload-alt"></i> Upload Company Banner</label>
+        <%= file_field_tag :files, class: 'js-file-upload', id: "file-upload" %>
+        <%= f.input :banner, as: :hidden %>
+        <div class="progress" style="display: none; margin-bottom: 10px;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 100%;"></div>
+        </div>
+        <%= f.submit "Create company", class: "btn btn-primary" %>
+      <% end %>
 
      </div>
   </div>

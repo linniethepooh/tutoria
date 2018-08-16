@@ -1,18 +1,21 @@
 const VideoUploader = function () {
   $(".js-file-upload").on('change', function () {
   var file = this.files[0]
-
-  $.getJSON('/signed_url?name=' + encodeURIComponent(Math.floor((Math.random() * 99999999999) + 1  ).toString() + ".mp4") + '&content_type=' + encodeURIComponent(file.type), function (data) {
+  let extension = (file.name.slice(-4));
+  $.getJSON('/signed_url?name=' + encodeURIComponent(Math.floor((Math.random() * 99999999999) + 1  ).toString() + extension) + '&content_type=' + encodeURIComponent(file.type), function (data) {
     var xhr = createCORSRequest('PUT', data.signed_url)
     document.querySelector(".progress").style.display = "block"
     xhr.onload = function () {
       if (xhr.status === 200) {
         const videoPath = xhr.responseURL.split("?")[0];
         const videoinput = document.querySelector("#tutorial_file")
+        const subtitleinput = document.querySelector("#tutorial_subtitle")
         if (videoinput) {
           document.querySelector("#tutorial_file").value = videoPath
-        } else {
+        } else if (subtitleinput) {
           document.querySelector("#tutorial_subtitle").value = videoPath
+        } else {
+          document.querySelector("#company_banner").value = videoPath
         }
         document.querySelector(".btn").disabled = false;
       } else {
