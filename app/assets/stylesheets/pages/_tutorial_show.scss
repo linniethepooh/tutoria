@@ -9,12 +9,12 @@
   justify-content: center;
   margin-top: 5vh;
   height: 470px;
-  padding: 0 7.5vh;
+  margin-left: 7.5vh;
 }
 
 .video-player {
   height: 100%;
-  width: 65vw;
+  width: 55vw;
 }
 
 .guide {
@@ -82,9 +82,8 @@
 }
 
 .tutorial-show-description {
-  width: 54vw;
+  width: 55vw;
   margin: 2vh 7.5vh;
-  padding-left: 1vw;
   border: none;
   box-shadow: 0 15px 35px rgba(50,50,93,.075), 0 5px 15px rgba(0,0,0,.02);
   background-color: $white;
