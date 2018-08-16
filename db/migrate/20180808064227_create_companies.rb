@@ -9,6 +9,8 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.string :city
       t.string :zipcode
       t.string :country
+      t.string :banner
+      t.string :website
 
       t.timestamps
     end

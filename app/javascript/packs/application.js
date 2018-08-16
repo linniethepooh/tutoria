@@ -52,3 +52,8 @@ const uploadedit = document.querySelector('.tutorials.edit');
 if (uploadedit) {
   VideoUploader();
 }
+
+const uploadebanner = document.querySelector('.companies.new');
+if (uploadebanner) {
+  VideoUploader();
+}
