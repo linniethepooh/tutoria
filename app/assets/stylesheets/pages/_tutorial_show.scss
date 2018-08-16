@@ -1,3 +1,9 @@
+.question-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .step-head {
       display: flex;
     justify-content: space-between;
@@ -46,8 +52,6 @@
   background-color: $blue;
   color: $white;
 }
-
-
 
 .my-player-dimensions {
   height: 28vh;
