@@ -9,31 +9,19 @@
             <div class="sub-heading">
               <h5>
                 Tutorials
-                <%= simple_form_for :tutorial, url: dashboard_path, method: :get do |f| %>
-                  <%= f.input :query, label: false, as: :string  %>
+                <%= simple_form_for :tutorial, url: dashboard_path, method: :get, remote: true do |f| %>
+                <%= f.input :query, label: false, as: :string %>
                 <% end %>
                 <%= link_to root_path, class: "btn btn-primary btn-circle", title: "Add" do%>
                 <i class="fas fa-plus"></i>
                 <% end %>
               </h5>
             </div>
-            <% @tutorials.each do |tutorial| %>
-            <div>
-              <div class="card-body">
-                <h6>
-                  <%= link_to tutorial.title, company_tutorial_path(tutorial.company.id, tutorial.id) %>
-                </h6>
-                <h6 class="card-subtitle mb-2 text-muted"><%= tutorial.views.count %> views</h6>
-                <button type="button" class="btn btn btn-primary btn-circle" title="Edit" >
-                  <i class="fas fa-pencil-alt"></i>
-                </button>
-                <button type="button" class="btn btn btn-primary btn-circle" title="Delete" >
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>
-            </div>
-            <hr>
-            <% end %>
+              <% @tutorials.each do |tutorial| %>
+                <div id="tutorials">
+                  <%= render 'tutorials/tutorial', tutorial: tutorial %>
+                </div>
+              <% end %>
           </div>
         </div>
       </div>
@@ -74,7 +62,7 @@
               </div>
 
 
-                <div>
+              <div>
                 <% if @user.status == "manager" %>
                 <% if staff.status == "staff" %>
                 <%= link_to company_make_manager_path(@company.id, staff.id), method: :patch, class: "btn btn btn-primary btn-circle text-center", title: "Upgrade" do %>
@@ -87,74 +75,74 @@
                 <% end %>
                 <% end %>
                 <% end %>
-                </div>
+              </div>
             </div>
             <hr>
             <% end %>
 
-        </div>
-      </div>
-
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-      <h5 class="help-desk">Help Desk </h5>
-      <div class="dashboard-questions">
-
-        <% @tutorials.each do |tutorial| %>
-        <% if tutorial.questions.exists? && !tutorial.questions.pluck(:answered).all?  %>
-        <% questions = tutorial.questions %>
-        <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
-        <% questions.each do |question| %>
-        <% if !question.answered %>
-        <div class="card question-card" style="width: auto;">
-          <div class="card-body">
-            <h5 class="card-title"><%= tutorial.title %></h5>
-            <h6 class="card-subtitle mb-2 text-muted">Step <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %></h6>
-            <p class="card-text"><%= question.content %> </p>
-            <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-primary btn-circle answer-button" data-toggle="modal" title="Reply" data-target="#exampleModalCenter"><i class="fas fa-reply"></i></button>
-            <%= link_to question_path(question.id), method: :delete, class: "btn btn-primary btn-circle", title: "Delete" do %>
-            <i class="fas fa-trash-alt"></i>
-            <% end %>
           </div>
         </div>
-        <% end %>
-        <% end %>
-        <% end %>
-        <% end %>
 
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+        <h5 class="help-desk">Help Desk </h5>
+        <div class="dashboard-questions">
+
+          <% @tutorials.each do |tutorial| %>
+          <% if tutorial.questions.exists? && !tutorial.questions.pluck(:answered).all?  %>
+          <% questions = tutorial.questions %>
+          <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
+          <% questions.each do |question| %>
+          <% if !question.answered %>
+          <div class="card question-card" style="width: auto;">
+            <div class="card-body">
+              <h5 class="card-title"><%= tutorial.title %></h5>
+              <h6 class="card-subtitle mb-2 text-muted">Step <%= "#{step_start_times.find_index(question.step.start_time) + 1}" %></h6>
+              <p class="card-text"><%= question.content %> </p>
+              <button type="button" data-value="<%= question.id %>" data-question="<%= question.content %>" class="btn btn-primary btn-circle answer-button" data-toggle="modal" title="Reply" data-target="#exampleModalCenter"><i class="fas fa-reply"></i></button>
+              <%= link_to question_path(question.id), method: :delete, class: "btn btn-primary btn-circle", title: "Delete" do %>
+              <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+          <% end %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Answer question</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form class="simple_form new_answer" id="new_answer" novalidate="novalidate" action="/questions/:question_id/answers" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="mpAGFQzlet+3Jjw6mMY8fpLyXXhhKm0ZtDL8EiFpLMtKICrmp9JEbM1t6K9LgQgO5iVUMHva1A5+gKdvp/c0KA==">
+
+            <p id="modal-question"></p>
+
+            <textarea label="Your question" placeholder="Enter answer here" rows="5" cols="50" name="question[content]" id="question_content"></textarea>
+
+            <input type="submit" name="commit" value="Submit" class="btn btn btn-primary" data-disable-with="Submit">
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-
-
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Answer question</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-        <form class="simple_form new_answer" id="new_answer" novalidate="novalidate" action="/questions/:question_id/answers" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="mpAGFQzlet+3Jjw6mMY8fpLyXXhhKm0ZtDL8EiFpLMtKICrmp9JEbM1t6K9LgQgO5iVUMHva1A5+gKdvp/c0KA==">
-
-          <p id="modal-question"></p>
-
-          <textarea label="Your question" placeholder="Enter answer here" rows="5" cols="50" name="question[content]" id="question_content"></textarea>
-
-          <input type="submit" name="commit" value="Submit" class="btn btn btn-primary" data-disable-with="Submit">
-        </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 </div>

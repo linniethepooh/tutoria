@@ -15,11 +15,17 @@ class UsersController < ApplicationController
         @tutorials = @company.tutorials.sort_by &:created_at
       end
     else
-      @tutorials = @company.tutorials.sort_by &:created_at
+      @tutorials =  Tutorial.all.sort_by &:created_at
     end
+
     @staff = @company.users
     @questions = Question.where(answered: false)
     @answer = Answer.new
+    byebug
+    respond_to do |format|
+       format.html
+       format.js
+     end
   end
 
   def destroy
