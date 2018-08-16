@@ -4,7 +4,19 @@ class UsersController < ApplicationController
     authorize current_user
     @user = current_user
     @company = current_user.company
-    @tutorials = @company.tutorials.sort_by &:created_at
+    if params[:tutorial].present?
+      if params[:tutorial][:query].present?
+        sql_query = " \
+          tutorials.title @@ :query \
+          OR tutorials.description @@ :query \
+          "
+        @tutorials = @company.tutorials.where(sql_query, query: "%#{params[:tutorial][:query]}%")
+      else
+        @tutorials = @company.tutorials.sort_by &:created_at
+      end
+    else
+      @tutorials = @company.tutorials.sort_by &:created_at
+    end
     @staff = @company.users
     @questions = Question.where(answered: false)
     @answer = Answer.new

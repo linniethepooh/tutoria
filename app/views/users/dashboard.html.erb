@@ -9,6 +9,9 @@
             <div class="sub-heading">
               <h5>
                 Tutorials
+                <%= simple_form_for :tutorial, url: dashboard_path, method: :get do |f| %>
+                  <%= f.input :query, label: false, as: :string  %>
+                <% end %>
                 <%= link_to root_path, class: "btn btn-primary btn-circle", title: "Add" do%>
                 <i class="fas fa-plus"></i>
                 <% end %>
