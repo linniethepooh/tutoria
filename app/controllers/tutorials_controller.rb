@@ -1,7 +1,7 @@
 class TutorialsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   after_action :verify_authorized, except: [:show, :index], unless: :skip_pundit?
-  before_action :find_tutorial, only: [:show, :edit, :update]
+  before_action :find_tutorial, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -12,6 +12,12 @@ class TutorialsController < ApplicationController
   end
 
   def destroy
+    authorize @tutorial
+    if @tutorial.destroy
+      redirect_to dashboard_path
+    else
+      redirect_to dashboard_path
+    end
   end
 
   def new
