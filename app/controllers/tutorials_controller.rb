@@ -33,11 +33,19 @@ class TutorialsController < ApplicationController
   end
 
   def edit
+    @step = Step.new
     @steps = @tutorial.steps
     authorize @tutorial
   end
 
   def update
+    authorize @tutorial
+    if @tutorial.update(tutorial_params)
+      @steps = @tutorial.steps
+      redirect_to edit_company_tutorial_path(@tutorial.company, @tutorial)
+    else
+      redirect_to edit_company_tutorial_path(@tutorial.company, @tutorial)
+    end
   end
 
   private
@@ -47,6 +55,6 @@ class TutorialsController < ApplicationController
   end
 
   def tutorial_params
-    params.require(:tutorial).permit(:title, :product, :description, :file)
+    params.require(:tutorial).permit(:title, :product, :description, :file, :subtitle)
   end
 end

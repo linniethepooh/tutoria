@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :companies, only: [:show], path: '', param: :name do
-    resources :tutorials
+    resources :tutorials do
+      resources :steps, only: [:new, :create, :destroy, :edit, :update]
+    end
   end
 
   resources :companies, except: [:show] do

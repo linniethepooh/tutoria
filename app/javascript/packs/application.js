@@ -45,3 +45,8 @@ const upload = document.querySelector('.tutorials.new');
 if (upload) {
   VideoUploader();
 }
+
+const uploadedit = document.querySelector('.tutorials.edit');
+if (uploadedit) {
+  VideoUploader();
+}

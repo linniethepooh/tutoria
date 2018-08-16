@@ -9,7 +9,12 @@ const VideoUploader = function () {
       if (xhr.status === 200) {
         alert('Upload Succesfull!')
             const videoPath = xhr.responseURL.split("?")[0];
-            document.querySelector("#tutorial_file").value = videoPath
+            const videoinput = document.querySelector("#tutorial_file")
+            if (videoinput) {
+              document.querySelector("#tutorial_file").value = videoPath
+            } else {
+              document.querySelector("#tutorial_subtitle").value = videoPath
+            }
             document.querySelector(".btn").disabled = false;
       } else {
         alert('Upload failed, please try again!')

@@ -3,6 +3,29 @@ $bar-color: white;
 $ball-color: white;
 $bg-color: $purple;
 
+
+.newstep {
+  height: auto;
+  width: 100%;
+  margin: 25px 0 25px 0;
+  border: none;
+  box-shadow: 0 15px 35px rgba(50,50,93,.075), 0 5px 15px rgba(0,0,0,.02);
+  background-color: $white;
+  border-radius: 12.5px;
+  display: flex;
+  color: $blue;
+
+}
+
+.form-title {
+  margin: 25px;
+  width: 100%;
+
+}
+
+
+
+
 .currently-processing {
   height: 94vh;
 }
@@ -193,3 +216,4 @@ $bg-color: $purple;
     transform: scale(1, 1);
   }
 }
+
