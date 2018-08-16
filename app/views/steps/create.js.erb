@@ -1,0 +1,42 @@
+
+startTimes = function () {
+  let times = [];
+  document.querySelectorAll(".step").forEach((step) => {
+  times.push(step.dataset.time);
+  });
+  return times;
+}
+
+
+function insert() {
+  let position;
+  times = startTimes();
+  times.forEach((time, index) => {
+    if (time > <%= @step.start_time %> < times[index + 1]) {
+      position = index;
+    }
+  });
+  document.querySelectorAll(".step").forEach((step, index) => {
+    if (index === position) {
+      step.insertAdjacentHTML("beforebegin",
+ `<div id="step-${position}" class="step" data-time="<%= @step.start_time %>">
+    <h5 style="display: inline-block;"><%= @step.headline %></h5>
+    <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= @step.start_time %>">See</button>
+    <p><%= @step.description %></p>
+  </div>`
+      );
+    }
+    });
+}
+
+<% if @step.errors.any? %>
+  alert("An error occured while saving the step")
+<% else %>
+  insert();
+<% end %>
+
+
+
+
+
+

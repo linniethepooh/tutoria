@@ -38,13 +38,23 @@
             <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">See</button>
             <button type="button" class="btn btn-outline-primary btn-sm video-loop" data-start= "<%= step.start_time %>" data-end= "<%= step_end_time %>">Loop</button>
             <button type="button" class="btn btn-outline-primary btn-sm tutorial-question-button" data-value="<%= step.id %>" data-toggle="modal" data-target="#exampleModalCenter">?</button>
-            <p><%= step.description %>
+            <p><%= step.description %></p>
           </div>
         <% end %>
       </div>
+      <div class="newstep">
+        <div class="form-title">
+          <h5> Add a Step </h5>
+          <%= simple_form_for @step, url: company_tutorial_steps_path(@tutorial.company.name, @tutorial), remote: true do |f| %>
+            <%= f.input :start_time %>
+            <%= f.input :headline %>
+            <%= f.input :description %>
+            <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-
 
   <div class="tutorial-show-description">
     <div class="tutorial-title"><%= @tutorial.title %></div>
@@ -54,7 +64,19 @@
      <br>
      <div class="materials-list"><strong>What you'll need: </strong></div>
       <p><%= @tutorial.materials %></p>
+      <div class="subtitle-form">
+    <%= link_to "Download Subtitles", @tutorial.subtitle %>
+    <%= simple_form_for @tutorial, url: company_tutorial_path(@tutorial.company.name, @tutorial) do |f| %>
+    <%= file_field_tag :file, class: 'js-file-upload' %>
+      <%= f.input :subtitle, as: :hidden %>
+      <div class="progress" style="display: none; margin-bottom: 10px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 100%;"></div>
+      </div>
+      <%= f.button :submit, disabled: true%>
+      <% end %>
   </div>
+  </div>
+
 </div>
 
 <div class="currently-processing" style="display: <%= "none" if @tutorial.subtitle %>;">
