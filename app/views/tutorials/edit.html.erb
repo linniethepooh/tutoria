@@ -68,13 +68,16 @@
 
       <div class="tutorial-show-description">
 
+
       <span><strong>Edit subtitles - first download, then upload</strong><p></p></span>
 
-    <%= link_to "Download Subtitles", @tutorial.subtitle, class: "btn btn-outline-primary" %><br><br>
+    <%= link_to "Download Subtitles", @tutorial.subtitle, class: "btn btn-outline-primary download-subtitles" %>
     <%= simple_form_for @tutorial, url: company_tutorial_path(@tutorial.company.name, @tutorial) do |f| %>
-     <label for="file-upload" class="custom-file-upload">
+     <label for="file-upload" class="custom-file-upload edit-upload-style">
           <i class="fas fa-cloud-upload-alt"></i> Upload Subtitles
     </label>
+
+
     <%= file_field_tag :file, class: 'js-file-upload', id: "file-upload" %>
       <%= f.input :subtitle, as: :hidden %>
       <div class="progress" style="display: none; margin-bottom: 10px;">
@@ -82,6 +85,7 @@
       </div>
       <%= f.button :submit, disabled: true%>
       <% end %>
+
   </div>
   </div>
 
