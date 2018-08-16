@@ -9,36 +9,49 @@ startTimes = function () {
 
 
 function insert() {
-  let position;
-  times = startTimes();
-  times.forEach((time, index) => {
-    if (time > <%= @step.start_time %> < times[index + 1]) {
-      position = index;
-    }
-  });
-  document.querySelectorAll(".step").forEach((step, index) => {
-    if (index === position) {
-      if (step) {
-        step.insertAdjacentHTML("beforebegin",
-       `<div id="step-${position}" class="step" data-time="<%= @step.start_time %>">
+  if (document.querySelectorAll(".step").length == 0){
+            document.querySelector(".steps-area").insertAdjacentHTML("afterbegin",
+       `<div id="step-0" class="step" data-time="<%= @step.start_time %>">
           <h5 style="display: inline-block;"><%= @step.headline %></h5>
-          <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">Delete</button>
+          <button type="button" class="btn btn-outline-primary btn-sm video-playback">Delete</button>
           <p class="time"><i><i class="far fa-clock"></i> <%= @step.start_time %> seconds</i></p>
           <p><%= @step.description %></p>
         </div>`
         );
-      } else {
-        document.querySelector(".steps-area").insertAdjacentHTML("afterbegin",
-       `<div id="step-${position}" class="step" data-time="<%= @step.start_time %>">
-          <h5 style="display: inline-block;"><%= @step.headline %></h5>
-          <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">Delete</button>
-          <p class="time"><i><i class="far fa-clock"></i> <%= @step.start_time %> seconds</i></p>
-          <p><%= @step.description %></p>
-        </div>`
-        );
+  } else {
+    let position = 0;
+    times = startTimes();
+    times.unshift(0);
+    times.forEach((time, index) => {
+      if (time > <%= @step.start_time %> < times[index + 1]) {
+        position = index;
       }
-    }
     });
+    document.querySelectorAll(".step").forEach((step, index) => {
+      console.log(position, "positon")
+      if (index === position) {
+        console.log(step)
+        if (position + 1 === times.length) {
+          step.insertAdjacentHTML("afterend",
+         `<div id="step-${position}" class="step" data-time="<%= @step.start_time %>">
+            <h5 style="display: inline-block;"><%= @step.headline %></h5>
+            <button type="button" class="btn btn-outline-primary btn-sm video-playback">Delete</button>
+            <p class="time"><i><i class="far fa-clock"></i> <%= @step.start_time %> seconds</i></p>
+            <p><%= @step.description %></p>
+          </div>`
+          );
+        }
+          step.insertAdjacentHTML("beforebegin",
+         `<div id="step-${position}" class="step" data-time="<%= @step.start_time %>">
+            <h5 style="display: inline-block;"><%= @step.headline %></h5>
+            <button type="button" class="btn btn-outline-primary btn-sm video-playback">Delete</button>
+            <p class="time"><i><i class="far fa-clock"></i> <%= @step.start_time %> seconds</i></p>
+            <p><%= @step.description %></p>
+          </div>`
+          );
+        }
+      });
+  }
 }
 
 <% if @step.errors.any? %>
