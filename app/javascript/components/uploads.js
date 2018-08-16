@@ -7,15 +7,14 @@ const VideoUploader = function () {
     document.querySelector(".progress").style.display = "block"
     xhr.onload = function () {
       if (xhr.status === 200) {
-        alert('Upload Succesfull!')
-            const videoPath = xhr.responseURL.split("?")[0];
-            const videoinput = document.querySelector("#tutorial_file")
-            if (videoinput) {
-              document.querySelector("#tutorial_file").value = videoPath
-            } else {
-              document.querySelector("#tutorial_subtitle").value = videoPath
-            }
-            document.querySelector(".btn").disabled = false;
+        const videoPath = xhr.responseURL.split("?")[0];
+        const videoinput = document.querySelector("#tutorial_file")
+        if (videoinput) {
+          document.querySelector("#tutorial_file").value = videoPath
+        } else {
+          document.querySelector("#tutorial_subtitle").value = videoPath
+        }
+        document.querySelector(".btn").disabled = false;
       } else {
         alert('Upload failed, please try again!')
       }

@@ -9,12 +9,12 @@
   justify-content: center;
   margin-top: 5vh;
   height: 470px;
-  padding: 0 7.5vh;
+  margin-left: 7.5vh;
 }
 
 .video-player {
   height: 100%;
-  width: 65vw;
+  width: 55vw;
 }
 
 .guide {
@@ -35,6 +35,9 @@
     border: none;
     box-shadow: 0 15px 35px rgba(50,50,93,.075), 0 5px 15px rgba(0,0,0,.02);
     background-color: $white;
+    h5 {
+      color: #2C3893;
+    }
   }
 
 }
@@ -82,22 +85,21 @@
 }
 
 .tutorial-show-description {
-  width: 54vw;
+  width: 55vw;
   margin: 2vh 7.5vh;
-  padding-left: 1vw;
   border: none;
   box-shadow: 0 15px 35px rgba(50,50,93,.075), 0 5px 15px rgba(0,0,0,.02);
   background-color: $white;
   padding: 2vh 2vh 2vh 2vh;
   border-radius: 12.5px;
-
-.tutorial-title {
-    font-size: 23px;
-    color: $blue;
-    padding-bottom: 15px;
-}
+  .tutorial-title {
+      font-size: 23px;
+      color: #2C3893;
+      padding-bottom: 15px;
+  }
   strong {
     margin-top: 5px;
+    color: #2C3893;
   }
   .materials-list{
     margin-top: 10px;

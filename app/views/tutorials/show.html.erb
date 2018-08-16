@@ -28,7 +28,8 @@
                 </div>
               </div>
               <div class="steps-area">
-                <% @steps.each_with_index do |step, index| %>
+                 <% @steps = @steps.sort_by {|obj| obj.start_time} %>
+                 <% @steps.each_with_index do |step, index| %>
                 <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
                   <div class="step-head">
                     <h5 style="display: inline-block;"><%= step.headline %></h5>
