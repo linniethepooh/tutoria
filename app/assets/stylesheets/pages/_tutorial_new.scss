@@ -3,3 +3,18 @@
   height: 100%;
   width: 65vw;
 }
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 100%;
+    border-color: $blue;
+    text-align: center;
+    border-style: dashed;
+}
