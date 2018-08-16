@@ -1,5 +1,5 @@
 company = Company.new ({
-  name: "Ikea",
+  name: "ikea",
   main_logo: "https://www.freepnglogos.com/uploads/abc-png-logo/news-abc-png-logo-3.png",
   address: "Pall Mall",
   city: "London",
