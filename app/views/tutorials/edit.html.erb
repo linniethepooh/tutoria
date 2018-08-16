@@ -63,8 +63,14 @@
      <br>
      <div class="materials-list"><strong>What you'll need: </strong></div>
       <p><%= @tutorial.materials %></p>
-      <div class="subtitle-form">
-    <%= link_to "Download Subtitles", @tutorial.subtitle %>
+
+    </div>
+
+      <div class="tutorial-show-description">
+
+      <span><strong>Edit subtitles - first download, then upload</strong><p></p></span>
+
+    <%= link_to "Download Subtitles", @tutorial.subtitle, class: "btn btn-outline-primary" %><br><br>
     <%= simple_form_for @tutorial, url: company_tutorial_path(@tutorial.company.name, @tutorial) do |f| %>
      <label for="file-upload" class="custom-file-upload">
           <i class="fas fa-cloud-upload-alt"></i> Upload Subtitles
