@@ -11,8 +11,8 @@ class StepsController < ApplicationController
     @step = Step.new(step_params)
     @tutorial = Tutorial.find(params[:tutorial_id])
     @step.tutorial = @tutorial
-    if @step.save
-    end
+    @step.save
+    @steps = @tutorial.steps
     respond_to do |format|
         format.html { redirect_to root_path }
         format.js
