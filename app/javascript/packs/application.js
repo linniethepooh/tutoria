@@ -14,6 +14,7 @@ import { activateParticles} from "../components/particles";
 import { VideoUploader } from "../components/uploads";
 import { setLoopMode } from "../components/videoPlayer";
 import { checkScroll } from "../components/videoPlayer";
+import { homepageScroll } from "../components/homepage";
 
 const videoPlayer = document.querySelectorAll('.video-js');
 
@@ -39,6 +40,7 @@ if (dashboard) {
 const home = document.querySelector('.home');
 if (home) {
   typedjs();
+  homepageScroll();
 }
 
 const upload = document.querySelector('.tutorials.new');

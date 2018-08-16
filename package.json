@@ -9,6 +9,7 @@
     "particles.js": "^2.0.0",
     "popper.js": "^1.14.4",
     "silvermine-videojs-quality-selector": "^1.1.2",
+    "smooth-scroll": "^14.2.1",
     "typed.js": "^2.0.9",
     "uppy": "^0.23.3",
     "video.js": "^7.1.0"
