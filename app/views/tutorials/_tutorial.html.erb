@@ -1,0 +1,17 @@
+<div>
+  <div class="card-body">
+    <h6>
+      <%= link_to tutorial.title, company_tutorial_path(tutorial.company.id, tutorial.id) %>
+    </h6>
+    <h6 class="card-subtitle mb-2 text-muted"><%= tutorial.views.count %> views</h6>
+    <button type="button" class="btn btn btn-primary btn-circle" title="Edit" >
+      <i class="fas fa-pencil-alt"></i>
+    </button>
+    <button type="button" class="btn btn btn-primary btn-circle" title="Delete" >
+      <i class="fas fa-trash-alt"></i>
+    </button>
+  </div>
+</div>
+<hr>
+
+

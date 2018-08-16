@@ -1,0 +1,12 @@
+console.log("hello from the dashboard")
+
+function renderTutorials(tutorialsHTML) {
+ const tutorials = document.getElementById('tutorials');
+ tutorials.innerHTML = tutorialsHTML;
+}
+
+<% if @tutorials.any? %>
+  renderTutorials('<%= j render @tutorials %>');
+<% else %>
+  renderTutorials('<div>No results found!</div>')
+<% end %>
