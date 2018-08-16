@@ -17,11 +17,9 @@
                 <% end %>
               </h5>
             </div>
-              <% @tutorials.each do |tutorial| %>
-                <div id="tutorials">
-                  <%= render 'tutorials/tutorial', tutorial: tutorial %>
-                </div>
-              <% end %>
+              <div id="tutorials">
+                <%= render @tutorials %>
+              </div>
           </div>
         </div>
       </div>

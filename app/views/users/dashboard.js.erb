@@ -5,4 +5,8 @@ function renderTutorials(tutorialsHTML) {
  tutorials.innerHTML = tutorialsHTML;
 }
 
-renderTutorials('<%= j render @tutorials %>');
+<% if @tutorials.any? %>
+  renderTutorials('<%= j render @tutorials %>');
+<% else %>
+  renderTutorials('<div>No results found!</div>')
+<% end %>
