@@ -99,10 +99,11 @@
   top: 0;
   border-radius: 12.5px 12.5px 0px 0px;
 }
-// .dashboard-title {
-//   margin-left: 20px;
-//   margin-top: 10px;
-// }
+.dashboard-title {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
 
 .dashboard-user {
   color: $blue;
