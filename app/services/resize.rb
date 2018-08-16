@@ -14,19 +14,19 @@ class Resize
     low = nil
     if video_height > 720
       system("ffmpeg -i #{file_name} -vf scale=#{(original_height * (720 / video_width)).round }:720 #{file_name[0..-5]}_resolution_#{720}.mp4")
-      high = VideoUploader.new.perform("#{upload_file[0..-4]}_resolution_#{720}.mp4").media_url
+      high = VideoUploader.new.perform("#{upload_file[0..-5]}_resolution_#{720}.mp4").media_url
       video_height = 720
       system("rm #{file_name}")
     end
     if video_height > 480
       system("ffmpeg -i #{file_name} -vf scale=#{(original_height * (480 / video_width)).round }:480 #{file_name[0..-5]}_resolution_#{480}.mp4")
-      medium = VideoUploader.new.perform("#{upload_file[0..-4]}_resolution_#{480}.mp4").media_url
+      medium = VideoUploader.new.perform("#{upload_file[0..-5]}_resolution_#{480}.mp4").media_url
       video_height = 480
       system("rm #{file_name[0..-5]}_resolution_#{720}.mp4")
     end
     if video_height > 360
       system("ffmpeg -i #{file_name} -vf scale=#{(original_height * (360 / video_width)).round }:360 #{file_name[0..-5]}_resolution_#{360}.mp4")
-      low = VideoUploader.new.perform("#{upload_file[0..-4]}_resolution_#{360}.mp4").media_url
+      low = VideoUploader.new.perform("#{upload_file[0..-5]}_resolution_#{360}.mp4").media_url
       video_height = 360
       system("rm #{file_name[0..-5]}_resolution_#{480}.mp4")
       system("rm #{file_name[0..-5]}_resolution_#{360}.mp4")
