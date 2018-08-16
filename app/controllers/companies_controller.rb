@@ -15,7 +15,7 @@ class CompaniesController < ApplicationController
         tutorials.title @@ :query \
         OR tutorials.description @@ :query \
         "
-      @tutorials = Tutorial.where(sql_query, query: "%#{params[:query]}%")
+      @tutorials = @company.tutorials.where(sql_query, query: "%#{params[:query]}%")
     else
       @tutorials = @company.tutorials
     end
@@ -25,9 +25,9 @@ class CompaniesController < ApplicationController
   def create
     @company = current_user.build_company(company_params)
     @user = current_user
-    if @company.save
+    if @company.save!
       @user.manager!
-      redirect_to company_path(@company)
+      redirect_to company_path(@company.name)
     else
       render :new
     end
