@@ -44,6 +44,7 @@ class TutorialsController < ApplicationController
   def edit
     @step = Step.new
     @steps = @tutorial.steps
+    @company = @tutorial.company
     authorize @tutorial
   end
 
