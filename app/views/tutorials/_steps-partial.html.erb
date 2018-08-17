@@ -7,7 +7,7 @@
       <% step_end_time = "end" %>
     <% end %>
 
-<%= simple_form_for step, url: company_tutorial_step_path(company.name, tutorial.id), method: :patch do |f| %>
+<%= simple_form_for step, url: company_tutorial_step_path(company.name, tutorial.id, step.id), method: :patch do |f| %>
   <%= f.input :headline, as: :string %>
   <%= f.input :start_time, as: :integer %>
   <%= f.input :description, as: :text, input_html: {rows: 5} %>
