@@ -1,0 +1,5 @@
+meta_product_name: "Online video tutorials"
+meta_title: "Tutorials - Instructions for the digital age"
+meta_description: "A dynamic solution that allows you to digitalise instructions for your business"
+meta_image: "tutoria_cover.png"                       # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
