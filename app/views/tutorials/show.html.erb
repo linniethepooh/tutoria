@@ -32,7 +32,7 @@
                <% @steps.each_with_index do |step, index| %>
                <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>" style="<%= "height: 108%;" if index == @steps.size - 1 %>">
                 <div class="step-head">
-                  <h5 style="display: inline-block;"><%= step.headline %></h5>
+                  <h5 style="display: inline-block;"><%=index +1%>. <%= step.headline %></h5>
                   <div>
                     <% if step != @steps[-1] %>
                     <% step_end_time = @steps[index + 1].start_time %>
@@ -71,7 +71,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <% @tutorial.steps.each_with_index do | step, index| %>
-                  <a class="dropdown-item" data-step="cardstep-<%=index%>" href="#"><%= step.headline %></a>
+                  <a class="dropdown-item" data-step="cardstep-<%=index%>" href="#"><%=index +1%>. <%= step.headline %></a>
                   <% end %>
                 </div>
               </div>
