@@ -39,8 +39,8 @@
   <div class="row">
     <% @tutorials.each do |tutorial| %>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-      <div class="video-card" style="width: auto;">
-        <iframe width="auto" height="215" src="<%= tutorial.file %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <div class="video-card" style="width: auto; background-image: url('<%= tutorial.image %>');      ">
+
 
          <div class="card-body">
           <h5 class="card-title" href="#">
