@@ -1,6 +1,8 @@
 .sign-up-form {
+  border-radius: 12.5px;
   background-color: $white;
-  border: 1px solid #dee2e6c7;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.075), 0 5px 15px rgba(0, 0, 0, 0.02);
+  // border: 1px solid #dee2e6c7;
   margin-top: 5vh;
   padding: 30px 50px 30px 50px;
   h3 {
