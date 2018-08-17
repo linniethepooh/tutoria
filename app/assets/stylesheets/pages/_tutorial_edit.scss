@@ -14,12 +14,28 @@ $bg-color: $purple;
   border-radius: 12.5px;
   display: flex;
   color: $blue;
-
 }
+
+.steps-area-edit {
+  margin-top: -10px !important;
+}
+
 
 .form-title {
   margin: 25px;
   width: 100%;
+}
+
+.step-edit-buttons {
+  margin-bottom: 30px;
+  margin-top: -20px;
+}
+
+.edit-upload-style {
+  width: 35%;
+}
+
+.download-subtitles {
 
 }
 

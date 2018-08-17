@@ -1,50 +1,12 @@
-
-startTimes = function () {
-  let times = [];
-  document.querySelectorAll(".step").forEach((step) => {
-  times.push(step.dataset.time);
-  });
-  return times;
-}
-
-
-function insert() {
-  let position;
-  times = startTimes();
-  times.forEach((time, index) => {
-    if (time > <%= @step.start_time %> < times[index + 1]) {
-      position = index;
-    }
-  });
-  document.querySelectorAll(".step").forEach((step, index) => {
-    if (index === position) {
-      if (step) {
-        step.insertAdjacentHTML("beforebegin",
-       `<div id="step-${position}" class="step" data-time="<%= @step.start_time %>">
-          <h5 style="display: inline-block;"><%= @step.headline %></h5>
-          <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">Delete</button>
-          <p class="time"><i><i class="far fa-clock"></i> <%= @step.start_time %> seconds</i></p>
-          <p><%= @step.description %></p>
-        </div>`
-        );
-      } else {
-        document.querySelector(".steps-area").insertAdjacentHTML("afterbegin",
-       `<div id="step-${position}" class="step" data-time="<%= @step.start_time %>">
-          <h5 style="display: inline-block;"><%= @step.headline %></h5>
-          <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">Delete</button>
-          <p class="time"><i><i class="far fa-clock"></i> <%= @step.start_time %> seconds</i></p>
-          <p><%= @step.description %></p>
-        </div>`
-        );
-      }
-    }
-    });
+function refreshForm(innerHTML) {
+  const newReviewForm = document.querySelector('.steps-area');
+  newReviewForm.innerHTML = innerHTML;
 }
 
 <% if @step.errors.any? %>
   alert("An error occured while saving the step")
 <% else %>
-  insert();
+    refreshForm('<%= j render "tutorials/steps-partial", steps: @steps %>');
 <% end %>
 
 

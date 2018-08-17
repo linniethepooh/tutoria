@@ -30,7 +30,10 @@ class TutorialsController < ApplicationController
     @tutorial.company = current_user.company
     if @tutorial.save
       CaptionJob.perform_later(@tutorial.id)
+      sleep(1.0/1000.0)
       ResizeJob.perform_later(@tutorial.id)
+      sleep(1.0/1000.0)
+      ThumbnailJob.perform_later(@tutorial.id)
       redirect_to edit_company_tutorial_path(@tutorial.company, @tutorial)
     else
       render :new
@@ -41,6 +44,7 @@ class TutorialsController < ApplicationController
   def edit
     @step = Step.new
     @steps = @tutorial.steps
+    @company = @tutorial.company
     authorize @tutorial
   end
 

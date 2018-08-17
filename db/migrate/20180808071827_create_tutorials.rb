@@ -12,6 +12,7 @@ class CreateTutorials < ActiveRecord::Migration[5.2]
       t.string :filehigh
       t.string :filemedium
       t.string :filelow
+      t.string :image
 
       t.timestamps
     end

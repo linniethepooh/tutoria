@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2018_08_15_081406) do
     t.string "city"
     t.string "zipcode"
     t.string "country"
+    t.string "banner"
+    t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -77,6 +79,7 @@ ActiveRecord::Schema.define(version: 2018_08_15_081406) do
     t.string "filehigh"
     t.string "filemedium"
     t.string "filelow"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.hstore "rawsubtitles", default: {}, null: false

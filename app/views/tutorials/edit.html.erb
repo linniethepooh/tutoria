@@ -17,29 +17,16 @@
       </video>
     </div>
     <div class="guide">
-        <div class="auto-scroll-box" style="display: none;">
+        <!-- <div class="auto-scroll-box" style="display: none;">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked="true">
             <label class="form-check-label" for="defaultCheck1">
               Automatic scrolling
             </label>
           </div>
-      </div>
-      <div class="steps-area">
-        <% @steps = @steps.sort_by {|obj| obj.start_time} %>
-        <% @steps.each_with_index do |step, index| %>
-          <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>">
-            <h5 style="display: inline-block;"><%= step.headline %></h5>
-            <% if step != @steps[-1] %>
-              <% step_end_time = @steps[index + 1].start_time %>
-            <% else %>
-              <% step_end_time = "end" %>
-            <% end %>
-            <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">Delete</button>
-            <p class="time"><i><i class="far fa-clock"></i> <%= step.start_time %> seconds</i></p>
-            <p><%= step.description %></p>
-          </div>
-        <% end %>
+      </div> -->
+      <div class="steps-area steps-area-edit">
+        <%= render "tutorials/steps-partial", steps: @steps, tutorial: @tutorial, company: @company %>
       </div>
       <div class="newstep">
         <div class="form-title">
@@ -48,12 +35,13 @@
             <%= f.input :start_time %>
             <%= f.input :headline %>
             <%= f.input :description %>
-            <%= f.button :submit %>
+            <%= f.button :submit, class: "btn btn-primary btn-sm" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+
 
   <div class="tutorial-show-description">
     <div class="tutorial-title"><%= @tutorial.title %></div>
@@ -63,12 +51,21 @@
      <br>
      <div class="materials-list"><strong>What you'll need: </strong></div>
       <p><%= @tutorial.materials %></p>
-      <div class="subtitle-form">
-    <%= link_to "Download Subtitles", @tutorial.subtitle %>
+
+    </div>
+
+      <div class="tutorial-show-description">
+
+
+      <span><strong>Edit subtitles - first download, then upload</strong><p></p></span>
+
+    <%= link_to "Download Subtitles", @tutorial.subtitle, class: "btn btn-outline-primary download-subtitles" %>
     <%= simple_form_for @tutorial, url: company_tutorial_path(@tutorial.company.name, @tutorial) do |f| %>
-     <label for="file-upload" class="custom-file-upload">
+     <label for="file-upload" class="custom-file-upload edit-upload-style">
           <i class="fas fa-cloud-upload-alt"></i> Upload Subtitles
     </label>
+
+
     <%= file_field_tag :file, class: 'js-file-upload', id: "file-upload" %>
       <%= f.input :subtitle, as: :hidden %>
       <div class="progress" style="display: none; margin-bottom: 10px;">
@@ -76,6 +73,7 @@
       </div>
       <%= f.button :submit, disabled: true%>
       <% end %>
+
   </div>
   </div>
 
@@ -97,3 +95,27 @@
   </div>
 </div>
 
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Submit a question</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>

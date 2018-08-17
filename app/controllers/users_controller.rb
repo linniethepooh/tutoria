@@ -4,22 +4,24 @@ class UsersController < ApplicationController
     authorize current_user
     @user = current_user
     @company = current_user.company
-    if params[:tutorial].present?
-      if params[:tutorial][:query].present?
-        sql_query = " \
-          tutorials.title @@ :query \
-          OR tutorials.description @@ :query \
-          "
-        @tutorials = @company.tutorials.where(sql_query, query: "%#{params[:tutorial][:query]}%")
-      else
-        @tutorials = @company.tutorials.sort_by &:created_at
-      end
-    else
-      @tutorials = @company.tutorials.sort_by &:created_at
+    @tutorials =  @company.tutorials.order(created_at: :desc)
+
+    if params.dig(:tutorial, :query).present?
+      sql_query = " \
+        tutorials.title @@ :query \
+        OR tutorials.description @@ :query \
+        "
+      @tutorials = @tutorials.where(sql_query, query: "%#{params[:tutorial][:query]}%")
     end
+
     @staff = @company.users
     @questions = Question.where(answered: false)
     @answer = Answer.new
+
+    respond_to do |format|
+       format.html
+       format.js
+     end
   end
 
   def destroy
