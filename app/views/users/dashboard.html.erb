@@ -84,6 +84,10 @@
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
 
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+
         <div class="dashboard-questions">
 
           <% @tutorials.each do |tutorial| %>
@@ -92,7 +96,9 @@
           <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
           <% questions.each do |question| %>
           <% if !question.answered %>
+
           <h5 class="help-desk">Help Desk </h5>
+
           <div class="card question-card" style="width: auto;">
             <div class="card-body">
               <h5 class="card-title"><%= tutorial.title %></h5>
