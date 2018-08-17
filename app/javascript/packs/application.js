@@ -15,6 +15,7 @@ import { VideoUploader } from "../components/uploads";
 import { setLoopMode } from "../components/videoPlayer";
 import { checkScroll } from "../components/videoPlayer";
 import { homepageScroll } from "../components/homepage";
+import { dashboardSearch } from "../components/search";
 
 const videoPlayer = document.querySelectorAll('.video-js');
 
@@ -35,6 +36,7 @@ if (tutorialPage) {
 const dashboard = document.querySelector('.users.dashboard');
 if (dashboard) {
   answerQuestion();
+  dashboardSearch();
 };
 
 const home = document.querySelector('.home');
