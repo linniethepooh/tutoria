@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     @user = current_user
     @company = current_user.company
     @tutorials =  @company.tutorials.order(created_at: :desc)
-
     if params[:query].present?
       sql_query = " \
         tutorials.title ILIKE :query \
