@@ -1,14 +1,23 @@
 <% steps = steps.sort_by {|obj| obj.start_time} %>
 <% steps.each_with_index do |step, index| %>
   <div id="step-<%=index %>" class="step" data-time="<%= step.start_time %>">
-    <h5 style="display: inline-block;"><%= step.headline %></h5>
     <% if step != steps[-1] %>
       <% step_end_time = steps[index + 1].start_time %>
     <% else %>
       <% step_end_time = "end" %>
     <% end %>
-    <button type="button" class="btn btn-outline-primary btn-sm video-playback" data-value= "<%= step.start_time %>">Delete</button>
-    <p class="time"><i><i class="far fa-clock"></i> <%= step.start_time %> seconds</i></p>
-    <p><%= step.description %></p>
+
+<%= simple_form_for step, url: company_tutorial_step_path(company.name, tutorial.id), method: :patch do |f| %>
+  <%= f.input :headline, as: :string %>
+  <%= f.input :start_time, as: :integer %>
+  <%= f.input :description, as: :text, input_html: {rows: 5} %>
+  <br>
+  <div class="step-edit-buttons">
+    <%= f.submit "Edit", class: "btn btn-primary btn-sm" %>
+    <%= link_to "Delete", company_tutorial_step_path(company.name, tutorial.id, step.id), method: :delete, class: "btn btn-primary btn-sm" %>
+  </div>
+
+<% end %>
+
   </div>
 <% end %>
