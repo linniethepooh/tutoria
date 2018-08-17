@@ -6,12 +6,12 @@ class UsersController < ApplicationController
     @company = current_user.company
     @tutorials =  @company.tutorials.order(created_at: :desc)
 
-    if params.dig(:tutorial, :query).present?
+    if params[:query].present?
       sql_query = " \
-        tutorials.title @@ :query \
-        OR tutorials.description @@ :query \
+        tutorials.title ILIKE :query \
+        OR tutorials.description ILIKE :query \
         "
-      @tutorials = @tutorials.where(sql_query, query: "%#{params[:tutorial][:query]}%")
+      @tutorials = @tutorials.where(sql_query, query: "%#{params[:query]}%")
     end
 
     @staff = @company.users
