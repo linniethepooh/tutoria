@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="dashboard-container">
-      <h3 class="dashboard-title">Overview - <span class="dashboard-user"><%= @user.company.name.capitalize%></span></h3>
+      <h3 class="dashboard-title">Overview - <span class="dashboard-user"><%= @user.company.name.upcase%></span></h3>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" >
         <div class="dashboard-left">
@@ -89,7 +89,7 @@
 
       </div> -->
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-
+        <h5 class="help-desk">Help Desk </h5>
         <div class="dashboard-questions">
 
           <% @tutorials.each do |tutorial| %>
@@ -98,8 +98,6 @@
           <% step_start_times = tutorial.steps.map {|step| step.start_time } %>
           <% questions.each do |question| %>
           <% if !question.answered %>
-
-          <h5 class="help-desk">Help Desk </h5>
 
           <div class="card question-card" style="width: auto;">
             <div class="card-body">
